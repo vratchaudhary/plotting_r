@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Introduction to ggplot2 | Plotting in R using ggplot</title>
+  <title>Chapter 6 Publication style figures and saving | Plotting in R using ggplot</title>
   <meta name="description" content="This is a practical example of creating impactful visualizations for presenting results of scientific data analysis. Examples mainly use ggplot2 package in R." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Introduction to ggplot2 | Plotting in R using ggplot" />
+  <meta property="og:title" content="Chapter 6 Publication style figures and saving | Plotting in R using ggplot" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Introduction to ggplot2 | Plotting in R using ggplot" />
+  <meta name="twitter:title" content="Chapter 6 Publication style figures and saving | Plotting in R using ggplot" />
   
   <meta name="twitter:description" content="This is a practical example of creating impactful visualizations for presenting results of scientific data analysis. Examples mainly use ggplot2 package in R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="intro.html"/>
-<link rel="next" href="plotting-using-one-variable-at-a-time.html"/>
+<link rel="prev" href="multivariate-data.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -180,83 +180,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction-to-ggplot2" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Introduction to ggplot2</h1>
-<p>The package ggplot2 is extremely functional and useful. It created graphs in layers and therefore is very intutive. It adds layers on top of each other</p>
-<div id="creating-the-building-blocks-of-the-graph" class="section level2">
-<h2><span class="header-section-number">3.1</span> Creating the building blocks of the graph</h2>
-<p>ggplot(data = dataname, mapping= aes(x=xaxis, y= yaxis))</p>
-<p>ggplot function from ggplot2 package requires two arguments:
-data is the object name you gave to your data sets
-Mapping is the specifications of the variables we want to visualize and are places withing the ‘aes’ function short for aesthetics.</p>
-<p>Let’s bring back the chick data and let’s look how chicks have grown over time</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduction-to-ggplot2.html#cb5-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb5-2"><a href="introduction-to-ggplot2.html#cb5-2"></a><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">.1</span>, <span class="fl">.1</span>))</span>
-<span id="cb5-3"><a href="introduction-to-ggplot2.html#cb5-3"></a><span class="kw">ggplot</span>(<span class="dt">data=</span>ChickWeight, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Time, <span class="dt">y=</span>weight))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:nice-fig"></span>
-<img src="plotting_r_files/figure-html/nice-fig-1.png" alt="Building block" width="80%" />
+<div id="publication-style-figures-and-saving" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Publication style figures and saving</h1>
+<p>‘ggpubr’ package is wondeful to create publication quality figures</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="publication-style-figures-and-saving.html#cb38-1"></a>diamonds2&lt;-diamonds</span>
+<span id="cb38-2"><a href="publication-style-figures-and-saving.html#cb38-2"></a><span class="kw">levels</span>(diamonds2<span class="op">$</span>color)</span></code></pre></div>
+<pre><code>## [1] &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot;</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="publication-style-figures-and-saving.html#cb40-1"></a>diamonds2<span class="op">$</span>color&lt;-<span class="st"> </span><span class="kw">factor</span>(diamonds2<span class="op">$</span>color, <span class="dt">levels =</span><span class="kw">c</span>(<span class="st">&quot;D&quot;</span> ,<span class="st">&quot;E&quot;</span> ,<span class="st">&quot;F&quot;</span> ,<span class="st">&quot;G&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;I&quot;</span>, <span class="st">&quot;J&quot;</span>), </span>
+<span id="cb40-2"><a href="publication-style-figures-and-saving.html#cb40-2"></a>                         <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Red&quot;</span>,<span class="st">&quot;Blue&quot;</span>,<span class="st">&quot;Orange&quot;</span>,<span class="st">&quot;Pink&quot;</span>,<span class="st">&quot;Indigo&quot;</span>,<span class="st">&quot;Jade&quot;</span>,<span class="st">&quot;Orange&quot;</span>))</span>
+<span id="cb40-3"><a href="publication-style-figures-and-saving.html#cb40-3"></a>         <span class="kw">ggplot</span>(diamonds2)<span class="op">+</span></span>
+<span id="cb40-4"><a href="publication-style-figures-and-saving.html#cb40-4"></a><span class="st">          </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>carat,<span class="dt">y=</span>price))<span class="op">+</span></span>
+<span id="cb40-5"><a href="publication-style-figures-and-saving.html#cb40-5"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">x=</span>carat,<span class="dt">y=</span>price),<span class="dt">method=</span><span class="st">&#39;lm&#39;</span>)<span class="op">+</span></span>
+<span id="cb40-6"><a href="publication-style-figures-and-saving.html#cb40-6"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>color)<span class="op">+</span></span>
+<span id="cb40-7"><a href="publication-style-figures-and-saving.html#cb40-7"></a><span class="st">  </span>ggpubr<span class="op">::</span><span class="kw">theme_pubr</span>(<span class="dt">base_size=</span><span class="dv">22</span>)<span class="op">+</span></span>
+<span id="cb40-8"><a href="publication-style-figures-and-saving.html#cb40-8"></a><span class="st">           </span></span>
+<span id="cb40-9"><a href="publication-style-figures-and-saving.html#cb40-9"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Carat&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Price&quot;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-24"></span>
+<img src="plotting_r_files/figure-html/unnamed-chunk-24-1.png" alt="Scatter plot with facets pub quality" width="80%" />
 <p class="caption">
-Figure 3.1: Building block
+Figure 6.1: Scatter plot with facets pub quality
 </p>
 </div>
-<p>We see a box, and we see the correct axis but we don’t see anything else- why?</p>
-</div>
-<div id="adding-geom_objects" class="section level2">
-<h2><span class="header-section-number">3.2</span> Adding geom_objects</h2>
-<p>Because yes we told ggplot what variables we want to plot, but we haven’t told it what type of plot we want.
-We can do this by adding a ‘geom_object’. For this purpose, let’s make a line plot. We can do so by adding a ‘geom_line’ object to the previous layer. We join the two layers by a ‘+’ sign.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="introduction-to-ggplot2.html#cb6-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb6-2"><a href="introduction-to-ggplot2.html#cb6-2"></a></span>
-<span id="cb6-3"><a href="introduction-to-ggplot2.html#cb6-3"></a><span class="kw">ggplot</span>(ChickWeight, <span class="dt">mapping=</span> <span class="kw">aes</span>(<span class="dt">x=</span>Time, <span class="dt">y=</span>weight))<span class="op">+</span></span>
-<span id="cb6-4"><a href="introduction-to-ggplot2.html#cb6-4"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
-<img src="plotting_r_files/figure-html/unnamed-chunk-5-1.png" alt="Line plot" width="80%" />
+<p>##Correlation plot</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="publication-style-figures-and-saving.html#cb42-1"></a>diamonds2&lt;-diamonds <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(depth,table, price,carat)</span>
+<span id="cb42-2"><a href="publication-style-figures-and-saving.html#cb42-2"></a></span>
+<span id="cb42-3"><a href="publication-style-figures-and-saving.html#cb42-3"></a><span class="co"># calulate the correlations</span></span>
+<span id="cb42-4"><a href="publication-style-figures-and-saving.html#cb42-4"></a>c &lt;-<span class="st"> </span><span class="kw">cor</span>(diamonds2, <span class="dt">use=</span><span class="st">&quot;complete.obs&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="publication-style-figures-and-saving.html#cb43-1"></a><span class="kw">library</span>(ggcorrplot)</span>
+<span id="cb43-2"><a href="publication-style-figures-and-saving.html#cb43-2"></a><span class="kw">ggcorrplot</span>(c,<span class="dt">lab=</span>T, <span class="dt">color=</span><span class="kw">c</span>(<span class="st">&quot;green&quot;</span>,<span class="st">&quot;black&quot;</span>,<span class="st">&quot;orange&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-26"></span>
+<img src="plotting_r_files/figure-html/unnamed-chunk-26-1.png" alt="Correlation plot" width="80%" />
 <p class="caption">
-Figure 3.2: Line plot
-</p>
-</div>
-<p>Hey! We got some lines, but it looks weird!!!
-That is becasue we plotted all the data together, we had 48 chicks but we plotted all of them in the same plot. So let’s make them distinct. We can simply do so by giving a distinct line to each chick by adding group</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introduction-to-ggplot2.html#cb7-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb7-2"><a href="introduction-to-ggplot2.html#cb7-2"></a></span>
-<span id="cb7-3"><a href="introduction-to-ggplot2.html#cb7-3"></a><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(<span class="dt">x=</span>Time, <span class="dt">y=</span>weight, <span class="dt">group=</span>Chick))<span class="op">+</span></span>
-<span id="cb7-4"><a href="introduction-to-ggplot2.html#cb7-4"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
-<img src="plotting_r_files/figure-html/unnamed-chunk-6-1.png" alt="Line plot with colors" width="80%" />
-<p class="caption">
-Figure 3.3: Line plot with colors
-</p>
-</div>
-</div>
-<div id="making-the-plot-visually-more-appealing" class="section level2">
-<h2><span class="header-section-number">3.3</span> Making the plot visually more appealing</h2>
-<p>Let’s do the following:
-1. Increase the size of the lines
-2. Lighten the background using the theme function in ggplot2
-3. Increase the size of axis text and titles
-4. Change y axis label</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="introduction-to-ggplot2.html#cb8-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb8-2"><a href="introduction-to-ggplot2.html#cb8-2"></a></span>
-<span id="cb8-3"><a href="introduction-to-ggplot2.html#cb8-3"></a><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(<span class="dt">x=</span>Time, <span class="dt">y=</span>weight, <span class="dt">group=</span>Chick),<span class="dt">size=</span><span class="dv">2</span>)<span class="op">+</span></span>
-<span id="cb8-4"><a href="introduction-to-ggplot2.html#cb8-4"></a><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></span>
-<span id="cb8-5"><a href="introduction-to-ggplot2.html#cb8-5"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
-<span id="cb8-6"><a href="introduction-to-ggplot2.html#cb8-6"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Weight&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
-<img src="plotting_r_files/figure-html/unnamed-chunk-7-1.png" alt="Better looking line plot with colors" width="80%" />
-<p class="caption">
-Figure 3.4: Better looking line plot with colors
+Figure 6.2: Correlation plot
 </p>
 </div>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="plotting-using-one-variable-at-a-time.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="multivariate-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

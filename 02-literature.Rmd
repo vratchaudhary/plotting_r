@@ -31,7 +31,7 @@ ggplot(ChickWeight, mapping= aes(x=Time, y=weight))+
 ```
 
 Hey! We got some lines, but it looks weird!!!
-That is becasue we plotted all the data together, we had 48 chicks but we plotted both of them in the same plot. So let's make them distinct. We can simply do so by giving a distinct color to each chick
+That is becasue we plotted all the data together, we had 48 chicks but we plotted all of them in the same plot. So let's make them distinct. We can simply do so by giving a distinct line to each chick by adding group
 
 ```{r, fig.cap='Line plot with colors', out.width='80%', fig.asp=.75, fig.align='center'}
 library(ggplot2)

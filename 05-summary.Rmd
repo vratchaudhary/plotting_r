@@ -1,3 +1,39 @@
-# Final Words
+# Publication style figures and saving
 
-We have finished a nice book.
+'ggpubr' package is wondeful to create publication quality figures
+
+```{r, fig.cap='Scatter plot with facets pub quality', out.width='80%', fig.asp=.75, fig.align='center'}
+
+diamonds2<-diamonds
+levels(diamonds2$color)
+diamonds2$color<- factor(diamonds2$color, levels =c("D" ,"E" ,"F" ,"G", "H", "I", "J"), 
+                         labels=c("Red","Blue","Orange","Pink","Indigo","Jade","Orange"))
+         ggplot(diamonds2)+
+          geom_point(aes(x=carat,y=price))+
+  geom_smooth(aes(x=carat,y=price),method='lm')+
+  facet_wrap(~color)+
+  ggpubr::theme_pubr(base_size=22)+
+           
+  ylab("Carat")+ xlab("Price")
+
+
+```
+
+
+##Correlation plot
+```{r}
+
+diamonds2<-diamonds %>% select(depth,table, price,carat)
+
+# calulate the correlations
+c <- cor(diamonds2, use="complete.obs")
+
+
+
+```
+
+```{r, fig.cap='Correlation plot', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggcorrplot)
+ggcorrplot(c,lab=T, color=c("green","black","orange"))
+
+```

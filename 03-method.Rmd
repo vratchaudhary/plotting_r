@@ -1,3 +1,107 @@
-# Methods
+# Plotting using one variable at a time
 
-We describe our methods in this chapter.
+## Histograms- plots the distribution of a numerical variable
+
+Note the customizations of the histogram:
+1. we colored the bars pretty
+2. 'alpha' adds transparency to the object, useful when you have overlapping objects, goes from 0 (transparent) to 1 (opaque)
+
+```{r, fig.cap='Histogram', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggplot2)
+
+ggplot(ChickWeight, aes(weight))+
+  geom_histogram(fill='cyan4',color='black',alpha=0.5)+
+  theme_minimal(base_size = 20)+
+  ylab("Frequency")+ xlab("Weight (g)")
+```
+
+Improving 'binwidth' value, it is the number of categories data is divided into and usually defaults to 30, but we can go up and down, let's go to 50 here
+```{r, fig.cap='Histogram', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggplot2)
+
+ggplot(ChickWeight, aes(weight))+
+  geom_histogram(fill='cyan4',color='black',alpha=0.5, binwidth = 50)+
+  theme_minimal(base_size = 20)+
+  ylab("Frequency")+ xlab("Weight (g)")
+```
+
+
+## Bar plots 
+
+Plot the distribution of a categorical variable
+
+Here we will plot number of chicks following a particular diet.
+```{r, fig.cap='Bar plot', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggplot2)
+
+ggplot(ChickWeight, aes(x= Diet))+
+  geom_bar(color='orange', fill='lavender')+
+  theme_minimal(base_size = 20)+
+  ylab("Count")+ xlab("Diet")
+```
+## Ordering based on number of counts from lowest to highest
+
+Let's bring the magic of dplyer to do so
+
+So we reorganize the data to calcualte number of chicks on each diet type
+
+
+
+```{r}
+
+library(tidyverse)
+reord.chick<-ChickWeight %>% 
+ count(Diet) %>% arrange(n)
+reord.chick
+
+
+```
+
+Here we plot using geom_col function where heights represents the value of the data and requires y aesthetics. We can use geom_text function to add the label to each column and use vjust to move the labels up and down
+
+```{r, fig.cap='Bar plot with labels', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggplot2)
+
+ggplot(reord.chick, aes(x= reorder(Diet,n), y=n))+
+  geom_col(color='orange', fill='lavender')+
+  geom_text(aes(label=n), vjust=-0.7)+
+  theme_minimal(base_size = 20)+
+  ylab("Count")+ xlab("Diet")
+
+```
+## Adding percentages
+
+Here we also get more adventerous with data wrangling and create new columns and plot them within the same pipe
+```{r, fig.cap='Bar plot with percent labels', out.width='80%', fig.asp=.75, fig.align='center'}
+
+ChickWeight %>% 
+  count(Diet) %>% arrange(n) %>% 
+mutate(percent = n / sum(n),
+         percentlabel = paste0(round(percent*100), "%")) %>% 
+
+ggplot( aes(x= reorder(Diet,percent), y=percent))+
+  geom_col(color='orange', fill='lavender')+
+  geom_text(aes(label=percentlabel), vjust=-0.7)+
+  theme_minimal(base_size = 20)+
+  ylab("Count")+ xlab("Diet")
+
+```
+
+## pie chart
+```{r, fig.cap='Pie chart with labels ', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggplot2)
+
+ggplot(reord.chick, aes(x= reorder(Diet,n), y=n,fill=Diet))+
+  geom_col(width = 1, 
+           stat = "identity", 
+           color = "black") +
+  geom_text(aes(label=n), vjust=-0.7)+
+  theme_minimal(base_size = 20)+
+  coord_polar("y", 
+              start = 0, 
+              direction = -1) +
+  theme_void() +
+  ylab("Count")+ xlab("Diet")
+
+```
+

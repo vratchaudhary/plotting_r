@@ -1,7 +1,112 @@
-# Applications
+# Multivariate data
+Now we will plot using multiple variables
 
-Some _significant_ applications are demonstrated in this chapter.
+Let's use diamond dataset from tidyr
+```{r}
+data("diamonds")
+head(diamonds)
+```
 
-## Example one
+## Bar plot with categories, plot depth by cut
 
-## Example two
+
+```{r, fig.cap='Bar plot with grouping', out.width='80%', fig.asp=.75, fig.align='center'}
+
+
+
+
+ggplot(diamonds)+
+ geom_bar(aes(x= cut, fill=color))+
+  theme_minimal(base_size = 20)+
+  ylab("Count")+ xlab("Cut")
+
+```
+
+
+## Bar plot with categories, side by side
+
+
+```{r, fig.cap='Bar plot with grouping', out.width='80%', fig.asp=.75, fig.align='center'}
+
+
+ggplot(diamonds)+
+ geom_bar(aes(x= cut, fill=color),position = position_dodge())+
+  theme_minimal(base_size = 20)+
+  ylab("Count")+ xlab("Cut")
+
+```
+
+## Segemented bar plot, appealing viz
+
+```{r, fig.cap='Bar plot with grouping', out.width='80%', fig.asp=.75, fig.align='center'}
+
+
+diamonds %>%
+  group_by(cut, color) %>%
+  summarize(n = n()) %>% 
+  mutate(prct = n/sum(n),
+         label = scales::percent(prct)) %>% 
+         ggplot()+
+          geom_col(aes(x=cut,y=prct,fill=color),position='fill')+
+          geom_text(aes(x=cut,y=prct,label = label), 
+            size = 3, 
+            position = position_stack(vjust = 0.5)) +
+             theme_minimal(base_size = 20)+
+  ylab("Percentage")+ xlab("Cut")
+
+
+```
+
+
+
+
+## Scatter plot
+
+```{r, fig.cap='Scatter plot with grouping', out.width='80%', fig.asp=.75, fig.align='center'}
+
+         ggplot(diamonds)+
+          geom_point(aes(x=carat,y=price,color=color))+
+  theme_bw()+
+  xlab("Carat")+ ylab("Price")
+
+
+```
+Let's see if the depth is related to price
+```{r, fig.cap='Scatter plot with grouping and smooth line', out.width='80%', fig.asp=.75, fig.align='center'}
+
+         ggplot(diamonds)+
+          geom_point(aes(x=carat,y=price,color=color))+
+  geom_smooth(aes(x=carat,y=price,color=color),method='lm')+
+  theme_bw()+
+  ylab("Price")+ xlab("Price")
+
+
+```
+## Grouping using facets
+```{r, fig.cap='Scatter plot with facets and smooth line', out.width='80%', fig.asp=.75, fig.align='center'}
+
+         ggplot(diamonds)+
+          geom_point(aes(x=carat,y=price))+
+  geom_smooth(aes(x=carat,y=price),method='lm')+
+  facet_wrap(~color)+
+  theme_bw()+
+  ylab("Carat")+ xlab("Price")
+
+
+```
+## Grouping using facets
+```{r, fig.cap='Scatter plot with facets and different labels', out.width='80%', fig.asp=.75, fig.align='center'}
+
+diamonds2<-diamonds
+levels(diamonds2$color)
+diamonds2$color<- factor(diamonds2$color, levels =c("D" ,"E" ,"F" ,"G", "H", "I", "J"), 
+                         labels=c("Red","Blue","Orange","Pink","Indigo","Jade","Orange"))
+         ggplot(diamonds2)+
+          geom_point(aes(x=carat,y=price))+
+  geom_smooth(aes(x=carat,y=price),method='lm')+
+  facet_wrap(~color)+
+  theme_bw()+
+  ylab("Carat")+ xlab("Price")
+
+
+```

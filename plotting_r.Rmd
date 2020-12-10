@@ -92,7 +92,7 @@ ggplot(ChickWeight, mapping= aes(x=Time, y=weight))+
 ```
 
 Hey! We got some lines, but it looks weird!!!
-That is becasue we plotted all the data together, we had 48 chicks but we plotted both of them in the same plot. So let's make them distinct. We can simply do so by giving a distinct color to each chick
+That is becasue we plotted all the data together, we had 48 chicks but we plotted all of them in the same plot. So let's make them distinct. We can simply do so by giving a distinct line to each chick by adding group
 
 ```{r, fig.cap='Line plot with colors', out.width='80%', fig.asp=.75, fig.align='center'}
 library(ggplot2)
@@ -126,25 +126,270 @@ knitr::write_bib(c(
 
 <!--chapter:end:02-literature.Rmd-->
 
-# Methods
+# Plotting using one variable at a time
 
-We describe our methods in this chapter.
+## Histograms- plots the distribution of a numerical variable
+
+Note the customizations of the histogram:
+1. we colored the bars pretty
+2. 'alpha' adds transparency to the object, useful when you have overlapping objects, goes from 0 (transparent) to 1 (opaque)
+
+```{r, fig.cap='Histogram', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggplot2)
+
+ggplot(ChickWeight, aes(weight))+
+  geom_histogram(fill='cyan4',color='black',alpha=0.5)+
+  theme_minimal(base_size = 20)+
+  ylab("Frequency")+ xlab("Weight (g)")
+```
+
+Improving 'binwidth' value, it is the number of categories data is divided into and usually defaults to 30, but we can go up and down, let's go to 50 here
+```{r, fig.cap='Histogram', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggplot2)
+
+ggplot(ChickWeight, aes(weight))+
+  geom_histogram(fill='cyan4',color='black',alpha=0.5, binwidth = 50)+
+  theme_minimal(base_size = 20)+
+  ylab("Frequency")+ xlab("Weight (g)")
+```
+
+
+## Bar plots 
+
+Plot the distribution of a categorical variable
+
+Here we will plot number of chicks following a particular diet.
+```{r, fig.cap='Bar plot', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggplot2)
+
+ggplot(ChickWeight, aes(x= Diet))+
+  geom_bar(color='orange', fill='lavender')+
+  theme_minimal(base_size = 20)+
+  ylab("Count")+ xlab("Diet")
+```
+## Ordering based on number of counts from lowest to highest
+
+Let's bring the magic of dplyer to do so
+
+So we reorganize the data to calcualte number of chicks on each diet type
+
+
+
+```{r}
+
+library(tidyverse)
+reord.chick<-ChickWeight %>% 
+ count(Diet) %>% arrange(n)
+reord.chick
+
+
+```
+
+Here we plot using geom_col function where heights represents the value of the data and requires y aesthetics. We can use geom_text function to add the label to each column and use vjust to move the labels up and down
+
+```{r, fig.cap='Bar plot with labels', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggplot2)
+
+ggplot(reord.chick, aes(x= reorder(Diet,n), y=n))+
+  geom_col(color='orange', fill='lavender')+
+  geom_text(aes(label=n), vjust=-0.7)+
+  theme_minimal(base_size = 20)+
+  ylab("Count")+ xlab("Diet")
+
+```
+## Adding percentages
+
+Here we also get more adventerous with data wrangling and create new columns and plot them within the same pipe
+```{r, fig.cap='Bar plot with percent labels', out.width='80%', fig.asp=.75, fig.align='center'}
+
+ChickWeight %>% 
+  count(Diet) %>% arrange(n) %>% 
+mutate(percent = n / sum(n),
+         percentlabel = paste0(round(percent*100), "%")) %>% 
+
+ggplot( aes(x= reorder(Diet,percent), y=percent))+
+  geom_col(color='orange', fill='lavender')+
+  geom_text(aes(label=percentlabel), vjust=-0.7)+
+  theme_minimal(base_size = 20)+
+  ylab("Count")+ xlab("Diet")
+
+```
+
+## pie chart
+```{r, fig.cap='Pie chart with labels ', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggplot2)
+
+ggplot(reord.chick, aes(x= reorder(Diet,n), y=n,fill=Diet))+
+  geom_col(width = 1, 
+           stat = "identity", 
+           color = "black") +
+  geom_text(aes(label=n), vjust=-0.7)+
+  theme_minimal(base_size = 20)+
+  coord_polar("y", 
+              start = 0, 
+              direction = -1) +
+  theme_void() +
+  ylab("Count")+ xlab("Diet")
+
+```
+
 
 <!--chapter:end:03-method.Rmd-->
 
-# Applications
+# Multivariate data
+Now we will plot using multiple variables
 
-Some _significant_ applications are demonstrated in this chapter.
+Let's use diamond dataset from tidyr
+```{r}
+data("diamonds")
+head(diamonds)
+```
 
-## Example one
+## Bar plot with categories, plot depth by cut
 
-## Example two
+
+```{r, fig.cap='Bar plot with grouping', out.width='80%', fig.asp=.75, fig.align='center'}
+
+
+
+
+ggplot(diamonds)+
+ geom_bar(aes(x= cut, fill=color))+
+  theme_minimal(base_size = 20)+
+  ylab("Count")+ xlab("Cut")
+
+```
+
+
+## Bar plot with categories, side by side
+
+
+```{r, fig.cap='Bar plot with grouping', out.width='80%', fig.asp=.75, fig.align='center'}
+
+
+ggplot(diamonds)+
+ geom_bar(aes(x= cut, fill=color),position = position_dodge())+
+  theme_minimal(base_size = 20)+
+  ylab("Count")+ xlab("Cut")
+
+```
+
+## Segemented bar plot, appealing viz
+
+```{r, fig.cap='Bar plot with grouping', out.width='80%', fig.asp=.75, fig.align='center'}
+
+
+diamonds %>%
+  group_by(cut, color) %>%
+  summarize(n = n()) %>% 
+  mutate(prct = n/sum(n),
+         label = scales::percent(prct)) %>% 
+         ggplot()+
+          geom_col(aes(x=cut,y=prct,fill=color),position='fill')+
+          geom_text(aes(x=cut,y=prct,label = label), 
+            size = 3, 
+            position = position_stack(vjust = 0.5)) +
+             theme_minimal(base_size = 20)+
+  ylab("Percentage")+ xlab("Cut")
+
+
+```
+
+
+
+
+## Scatter plot
+
+```{r, fig.cap='Scatter plot with grouping', out.width='80%', fig.asp=.75, fig.align='center'}
+
+         ggplot(diamonds)+
+          geom_point(aes(x=carat,y=price,color=color))+
+  theme_bw()+
+  xlab("Carat")+ ylab("Price")
+
+
+```
+Let's see if the depth is related to price
+```{r, fig.cap='Scatter plot with grouping and smooth line', out.width='80%', fig.asp=.75, fig.align='center'}
+
+         ggplot(diamonds)+
+          geom_point(aes(x=carat,y=price,color=color))+
+  geom_smooth(aes(x=carat,y=price,color=color),method='lm')+
+  theme_bw()+
+  ylab("Price")+ xlab("Price")
+
+
+```
+## Grouping using facets
+```{r, fig.cap='Scatter plot with facets and smooth line', out.width='80%', fig.asp=.75, fig.align='center'}
+
+         ggplot(diamonds)+
+          geom_point(aes(x=carat,y=price))+
+  geom_smooth(aes(x=carat,y=price),method='lm')+
+  facet_wrap(~color)+
+  theme_bw()+
+  ylab("Carat")+ xlab("Price")
+
+
+```
+## Grouping using facets
+```{r, fig.cap='Scatter plot with facets and different labels', out.width='80%', fig.asp=.75, fig.align='center'}
+
+diamonds2<-diamonds
+levels(diamonds2$color)
+diamonds2$color<- factor(diamonds2$color, levels =c("D" ,"E" ,"F" ,"G", "H", "I", "J"), 
+                         labels=c("Red","Blue","Orange","Pink","Indigo","Jade","Orange"))
+         ggplot(diamonds2)+
+          geom_point(aes(x=carat,y=price))+
+  geom_smooth(aes(x=carat,y=price),method='lm')+
+  facet_wrap(~color)+
+  theme_bw()+
+  ylab("Carat")+ xlab("Price")
+
+
+```
 
 <!--chapter:end:04-application.Rmd-->
 
-# Final Words
+# Publication style figures and saving
 
-We have finished a nice book.
+'ggpubr' package is wondeful to create publication quality figures
+
+```{r, fig.cap='Scatter plot with facets pub quality', out.width='80%', fig.asp=.75, fig.align='center'}
+
+diamonds2<-diamonds
+levels(diamonds2$color)
+diamonds2$color<- factor(diamonds2$color, levels =c("D" ,"E" ,"F" ,"G", "H", "I", "J"), 
+                         labels=c("Red","Blue","Orange","Pink","Indigo","Jade","Orange"))
+         ggplot(diamonds2)+
+          geom_point(aes(x=carat,y=price))+
+  geom_smooth(aes(x=carat,y=price),method='lm')+
+  facet_wrap(~color)+
+  ggpubr::theme_pubr(base_size=22)+
+           
+  ylab("Carat")+ xlab("Price")
+
+
+```
+
+
+##Correlation plot
+```{r}
+
+diamonds2<-diamonds %>% select(depth,table, price,carat)
+
+# calulate the correlations
+c <- cor(diamonds2, use="complete.obs")
+
+
+
+```
+
+```{r, fig.cap='Correlation plot', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggcorrplot)
+ggcorrplot(c,lab=T, color=c("green","black","orange"))
+
+```
 
 <!--chapter:end:05-summary.Rmd-->
 
