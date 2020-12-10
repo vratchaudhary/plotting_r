@@ -166,10 +166,114 @@ Lets look at the chickeweight data
 ## 6     93   10     1    1
 \end{verbatim}
 
-\hypertarget{literature}{%
-\chapter{Literature}\label{literature}}
+\hypertarget{introduction-to-ggplot2}{%
+\chapter{Introduction to ggplot2}\label{introduction-to-ggplot2}}
 
-Here is a review of existing methods.
+The package ggplot2 is extremely functional and useful. It created graphs in layers and therefore is very intutive. It adds layers on top of each other
+
+\hypertarget{creating-the-building-blocks-of-the-graph}{%
+\section{Creating the building blocks of the graph}\label{creating-the-building-blocks-of-the-graph}}
+
+ggplot(data = dataname, mapping= aes(x=xaxis, y= yaxis))
+
+ggplot function from ggplot2 package requires two arguments:
+data is the object name you gave to your data sets
+Mapping is the specifications of the variables we want to visualize and are places withing the `aes' function short for aesthetics.
+
+Let's bring back the chick data and let's look how chicks have grown over time
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{.1}\NormalTok{, }\FloatTok{.1}\NormalTok{))}
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data=}\NormalTok{ChickWeight, }\DataTypeTok{mapping=}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Time, }\DataTypeTok{y=}\NormalTok{weight))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{plotting_r_files/figure-latex/nice-fig-1} 
+
+}
+
+\caption{Building block}\label{fig:nice-fig}
+\end{figure}
+
+We see a box, and we see the correct axis but we don't see anything else- why?
+
+\hypertarget{adding-geom_objects}{%
+\section{Adding geom\_objects}\label{adding-geom_objects}}
+
+Because yes we told ggplot what variables we want to plot, but we haven't told it what type of plot we want.
+We can do this by adding a `geom\_object'. For this purpose, let's make a line plot. We can do so by adding a `geom\_line' object to the previous layer. We join the two layers by a `+' sign.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\KeywordTok{ggplot}\NormalTok{(ChickWeight, }\DataTypeTok{mapping=} \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Time, }\DataTypeTok{y=}\NormalTok{weight))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{plotting_r_files/figure-latex/unnamed-chunk-5-1} 
+
+}
+
+\caption{Line plot}\label{fig:unnamed-chunk-5}
+\end{figure}
+
+Hey! We got some lines, but it looks weird!!!
+That is becasue we plotted all the data together, we had 48 chicks but we plotted both of them in the same plot. So let's make them distinct. We can simply do so by giving a distinct color to each chick
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\KeywordTok{ggplot}\NormalTok{(ChickWeight, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Time, }\DataTypeTok{y=}\NormalTok{weight, }\DataTypeTok{group=}\NormalTok{Chick))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{plotting_r_files/figure-latex/unnamed-chunk-6-1} 
+
+}
+
+\caption{Line plot with colors}\label{fig:unnamed-chunk-6}
+\end{figure}
+
+\hypertarget{making-the-plot-visually-more-appealing}{%
+\section{Making the plot visually more appealing}\label{making-the-plot-visually-more-appealing}}
+
+Let's do the following:
+1. Increase the size of the lines
+2. Lighten the background using the theme function in ggplot2
+3. Increase the size of axis text and titles
+4. Change y axis label
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\KeywordTok{ggplot}\NormalTok{(ChickWeight, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Time, }\DataTypeTok{y=}\NormalTok{weight, }\DataTypeTok{group=}\NormalTok{Chick),}\DataTypeTok{size=}\DecValTok{2}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{()}\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme_minimal}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{20}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Weight"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{plotting_r_files/figure-latex/unnamed-chunk-7-1} 
+
+}
+
+\caption{Better looking line plot with colors}\label{fig:unnamed-chunk-7}
+\end{figure}
 
 \hypertarget{methods}{%
 \chapter{Methods}\label{methods}}

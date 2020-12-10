@@ -59,9 +59,70 @@ head(ChickWeight)
 
 <!--chapter:end:01-intro.Rmd-->
 
-# Literature
+# Introduction to ggplot2
 
-Here is a review of existing methods.
+The package ggplot2 is extremely functional and useful. It created graphs in layers and therefore is very intutive. It adds layers on top of each other 
+
+## Creating the building blocks of the graph
+
+ggplot(data = dataname, mapping= aes(x=xaxis, y= yaxis))
+
+ggplot function from ggplot2 package requires two arguments:
+  data is the object name you gave to your data sets
+  Mapping is the specifications of the variables we want to visualize and are places withing the  'aes' function short for aesthetics.
+
+Let's bring back the chick data and let's look how chicks have grown over time
+
+```{r nice-fig, fig.cap='Building block', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggplot2)
+par(mar = c(4, 4, .1, .1))
+ggplot(data=ChickWeight, mapping=aes(x=Time, y=weight))
+```
+We see a box, and we see the correct axis but we don't see anything else- why?
+
+## Adding geom_objects
+Because yes we told ggplot what variables we want to plot, but we haven't told it what type of plot we want. 
+We can do this by adding a 'geom_object'. For this purpose, let's make a line plot. We can do so by adding a 'geom_line' object to the previous layer. We join the two layers by a '+' sign.
+
+```{r, fig.cap='Line plot', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggplot2)
+
+ggplot(ChickWeight, mapping= aes(x=Time, y=weight))+
+  geom_line()
+```
+
+Hey! We got some lines, but it looks weird!!!
+That is becasue we plotted all the data together, we had 48 chicks but we plotted both of them in the same plot. So let's make them distinct. We can simply do so by giving a distinct color to each chick
+
+```{r, fig.cap='Line plot with colors', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggplot2)
+
+ggplot(ChickWeight, aes(x=Time, y=weight, group=Chick))+
+  geom_line()
+```
+
+## Making the plot visually more appealing 
+
+Let's do the following:
+1. Increase the size of the lines
+2. Lighten the background using the theme function in ggplot2
+3. Increase the size of axis text and titles
+4. Change y axis label
+```{r, fig.cap='Better looking line plot with colors', out.width='80%', fig.asp=.75, fig.align='center'}
+library(ggplot2)
+
+ggplot(ChickWeight, aes(x=Time, y=weight, group=Chick),size=2)+
+  geom_line()+
+  theme_minimal(base_size = 20)+
+  ylab("Weight")
+```
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'ggplotw'
+), 'packages.bib')
+```
 
 <!--chapter:end:02-literature.Rmd-->
 
