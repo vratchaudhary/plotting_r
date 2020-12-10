@@ -1,0 +1,95 @@
+--- 
+title: "Plotting in R using ggplot"
+author: "Vratika Chaudhary"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This is a practical example of creating impactful visualizations for
+  presenting results of scientific data analysis. Examples mainly use ggplot2 package
+  in R."
+---
+
+# Prerequisites
+
+R programming language
+Installed packages:
+
+  
+  
+
+```{r eval=FALSE}
+pkg<-c("ggplot2","ggpubr","auk","datasets","ggpubr","ggcorrplot")
+install.packages(pkg)
+
+```
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'auk', 'knitr', 'rmarkdown' ,'tidyverse','ggplot','datasets','ggpubr','ggcorrplot'
+), 'packages.bib')
+```
+
+<!--chapter:end:index.Rmd-->
+
+# Data preperation {#intro}
+
+
+
+We can enter CSV data in R using read.csv function or read_csv function from readr package. However, for now we will use data that already exist in the datasets packages that we downloaded
+
+Lets load the library 'datsets'
+```{r include=TRUE}
+library(datasets)
+
+
+```
+
+
+Lets look at the chickeweight data 
+
+```{r include=TRUE}
+head(ChickWeight)
+
+```
+
+<!--chapter:end:01-intro.Rmd-->
+
+# Literature
+
+Here is a review of existing methods.
+
+<!--chapter:end:02-literature.Rmd-->
+
+# Methods
+
+We describe our methods in this chapter.
+
+<!--chapter:end:03-method.Rmd-->
+
+# Applications
+
+Some _significant_ applications are demonstrated in this chapter.
+
+## Example one
+
+## Example two
+
+<!--chapter:end:04-application.Rmd-->
+
+# Final Words
+
+We have finished a nice book.
+
+<!--chapter:end:05-summary.Rmd-->
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:06-references.Rmd-->
+

@@ -1,0 +1,20 @@
+# Data preperation {#intro}
+
+
+
+We can enter CSV data in R using read.csv function or read_csv function from readr package. However, for now we will use data that already exist in the datasets packages that we downloaded
+
+Lets load the library 'datsets'
+```{r include=TRUE}
+library(datasets)
+
+
+```
+
+
+Lets look at the chickeweight data 
+
+```{r include=TRUE}
+head(ChickWeight)
+
+```
