@@ -486,6 +486,35 @@ ggcorrplot(c,lab=T, color=c("green","black","orange"))
 
 ```
 
+## Time series
+
+Data collected in successive time points- dates, years, hours
+Let's look at some time series data 
+
+Customize dates
+Weekday name:  %a and %A for abbreviated and full weekday name, respectively
+Month name:  %b and %B for abbreviated and full month name, respectively
+%d: day of the month as decimal number
+%U: week of the year as decimal number (00–53)
+%Y: Year 
+```{r}
+#tidyr::population
+head(economics_long)
+
+
+```
+```{r, fig.cap='time series plot', out.width='80%', fig.asp=.75, fig.align='center'}
+
+ggplot(economics_long)+
+  geom_line(aes(date, value, color=variable))+
+ scale_x_date(breaks='10 years',date_labels = "%b-%y")+ 
+  xlab("Date")
+  
+
+```
+
+
+
 <!--chapter:end:05-summary.Rmd-->
 
 `r if (knitr::is_html_output()) '
