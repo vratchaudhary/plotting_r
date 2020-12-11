@@ -78,6 +78,8 @@ ggplot(ChickWeight, aes(x=Time, y=weight, color=Chick),size=2)+
   ylab("Weight")+theme(axis.title.x = element_text( angle=40,vjust=0.2,color='blue',family="Comic Sans MS"))+
   theme(axis.title.y =  element_text( color='purple',family="serif"))
 ```
+
+
 ## You can also create and save a theme for entire project
 
 ```{r, fig.cap='change label font', out.width='80%', fig.asp=.75, fig.align='center'}
