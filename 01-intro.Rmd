@@ -60,4 +60,3 @@ relig_income.back<-relig_income2 %>% pivot_wider( names_from="income",values_fro
 head(relig_income.back)
 ```
 
-

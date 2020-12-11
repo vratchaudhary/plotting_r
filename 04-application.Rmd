@@ -32,9 +32,11 @@ ggplot(diamonds)+
 ggplot(diamonds)+
  geom_bar(aes(x= cut, fill=color),position = position_dodge())+
   theme_minimal(base_size = 20)+
-  ylab("Count")+ xlab("Cut")
+  ylab("Count")+ xlab("Cut")+
+  scale_x_discrete(guide = guide_axis(n.dodge = 2)) # when the axis text are overlapping, this can help
 
 ```
+
 
 ## Segemented bar plot, appealing viz
 

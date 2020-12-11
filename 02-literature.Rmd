@@ -89,3 +89,22 @@ theme_set<-function(){ theme_bw(base_size = 20)+
 ggplot(ChickWeight, aes(x=Time, y=weight, color=Chick),size=2)+
   geom_line()+theme_set()
 ```
+
+## Changing colors manually and add error bars
+
+Lets plot the mean chick weight over time for each type of diet
+
+```{r, fig.cap='change label font', out.width='80%', fig.asp=.75, fig.align='center'}
+
+ChickWeight %>% group_by(Diet,Time) %>% mutate(mean.wt=mean(weight), 
+                  se.weight= (sd(weight)) / sqrt((length(weight)))) %>% 
+                 ggplot() + 
+              geom_line(aes(x=Time, y=mean.wt, color=Diet,lty=Diet),size=2)+
+            geom_ribbon(aes(x=Time, ymax=mean.wt+se.weight,ymin= mean.wt-se.weight,group=Diet,fill=Diet),size=2,alpha=0.2)+
+              scale_color_manual(values=c("cyan1","cyan4","green","orange"))+
+            scale_fill_manual(values=c("cyan1","cyan4","green","orange"))+
+              ggpubr::theme_pubr(base_size = 20)+
+                ylab("Mean weight")
+                     
+```
+
