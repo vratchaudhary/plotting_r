@@ -373,8 +373,8 @@ diamonds %>%
 
 ```{r, fig.cap='Scatter plot with grouping', out.width='80%', fig.asp=.75, fig.align='center'}
 
-         ggplot(diamonds)+
-          geom_point(aes(x=carat,y=price,color=color))+
+ggplot(diamonds)+
+geom_point(aes(x=carat,y=price,color=color))+
   theme_bw()+
   xlab("Carat")+ ylab("Price")
 
