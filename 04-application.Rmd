@@ -98,7 +98,7 @@ Let's see if the Carat is related to price
 
 ```
 
-## Grouping using facets
+## Change facet labels
 ```{r, fig.cap='Scatter plot with facets and different labels', out.width='80%', fig.asp=.75, fig.align='center'}
 
 diamonds2<-diamonds

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Plotting using one variable at a time | Plotting in R using ggplot</title>
+  <title>Chapter 4 Plotting using one variable at a time | Plotting in R using ggplot</title>
   <meta name="description" content="This is a practical example of creating impactful visualizations for presenting results of scientific data analysis. Examples mainly use ggplot2 package in R." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Plotting using one variable at a time | Plotting in R using ggplot" />
+  <meta property="og:title" content="Chapter 4 Plotting using one variable at a time | Plotting in R using ggplot" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Plotting using one variable at a time | Plotting in R using ggplot" />
+  <meta name="twitter:title" content="Chapter 4 Plotting using one variable at a time | Plotting in R using ggplot" />
   
   <meta name="twitter:description" content="This is a practical example of creating impactful visualizations for presenting results of scientific data analysis. Examples mainly use ggplot2 package in R." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="Vratika Chaudhary" />
 
 
-<meta name="date" content="2020-12-10" />
+<meta name="date" content="2020-12-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="you-can-also-create-and-save-a-theme-for-entire-project.html"/>
+<link rel="prev" href="introduction-to-ggplot2.html"/>
 <link rel="next" href="multivariate-plotting.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -144,24 +144,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="introduction-to-ggplot2.html"><a href="introduction-to-ggplot2.html#making-the-plot-visually-more-appealing"><i class="fa fa-check"></i><b>3.3</b> Making the plot visually more appealing</a></li>
 <li class="chapter" data-level="3.4" data-path="introduction-to-ggplot2.html"><a href="introduction-to-ggplot2.html#lets-make-the-plot-colorful"><i class="fa fa-check"></i><b>3.4</b> Let’s make the plot colorful</a></li>
 <li class="chapter" data-level="3.5" data-path="introduction-to-ggplot2.html"><a href="introduction-to-ggplot2.html#change-label-fonts-color-angle-etc"><i class="fa fa-check"></i><b>3.5</b> Change label fonts, color, angle etc</a></li>
+<li class="chapter" data-level="3.6" data-path="introduction-to-ggplot2.html"><a href="introduction-to-ggplot2.html#you-can-also-create-and-save-a-theme-for-entire-project"><i class="fa fa-check"></i><b>3.6</b> You can also create and save a theme for entire project</a></li>
+<li class="chapter" data-level="3.7" data-path="introduction-to-ggplot2.html"><a href="introduction-to-ggplot2.html#changing-colors-manually-and-add-error-bars"><i class="fa fa-check"></i><b>3.7</b> Changing colors manually and add error bars</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="you-can-also-create-and-save-a-theme-for-entire-project.html"><a href="you-can-also-create-and-save-a-theme-for-entire-project.html"><i class="fa fa-check"></i><b>4</b> You can also create and save a theme for entire project</a></li>
-<li class="chapter" data-level="5" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html"><i class="fa fa-check"></i><b>5</b> Plotting using one variable at a time</a><ul>
-<li class="chapter" data-level="5.1" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html#histograms--plots-the-distribution-of-a-numerical-variable"><i class="fa fa-check"></i><b>5.1</b> Histograms- plots the distribution of a numerical variable</a></li>
-<li class="chapter" data-level="5.2" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html#bar-plots"><i class="fa fa-check"></i><b>5.2</b> Bar plots</a></li>
-<li class="chapter" data-level="5.3" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html#ordering-based-on-number-of-counts-from-lowest-to-highest"><i class="fa fa-check"></i><b>5.3</b> Ordering based on number of counts from lowest to highest</a></li>
-<li class="chapter" data-level="5.4" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html#adding-percentages"><i class="fa fa-check"></i><b>5.4</b> Adding percentages</a></li>
-<li class="chapter" data-level="5.5" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html#pie-chart"><i class="fa fa-check"></i><b>5.5</b> pie chart</a></li>
+<li class="chapter" data-level="4" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html"><i class="fa fa-check"></i><b>4</b> Plotting using one variable at a time</a><ul>
+<li class="chapter" data-level="4.1" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html#histograms--plots-the-distribution-of-a-numerical-variable"><i class="fa fa-check"></i><b>4.1</b> Histograms- plots the distribution of a numerical variable</a></li>
+<li class="chapter" data-level="4.2" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html#bar-plots"><i class="fa fa-check"></i><b>4.2</b> Bar plots</a></li>
+<li class="chapter" data-level="4.3" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html#ordering-based-on-number-of-counts-from-lowest-to-highest"><i class="fa fa-check"></i><b>4.3</b> Ordering based on number of counts from lowest to highest</a></li>
+<li class="chapter" data-level="4.4" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html#adding-percentages"><i class="fa fa-check"></i><b>4.4</b> Adding percentages</a></li>
+<li class="chapter" data-level="4.5" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html#pie-chart"><i class="fa fa-check"></i><b>4.5</b> pie chart</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html"><i class="fa fa-check"></i><b>6</b> Multivariate plotting</a><ul>
-<li class="chapter" data-level="6.1" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#bar-plot-with-categories-plot-depth-by-cut"><i class="fa fa-check"></i><b>6.1</b> Bar plot with categories, plot depth by cut</a></li>
-<li class="chapter" data-level="6.2" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#bar-plot-with-categories-side-by-side"><i class="fa fa-check"></i><b>6.2</b> Bar plot with categories, side by side</a></li>
-<li class="chapter" data-level="6.3" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#segemented-bar-plot-appealing-viz"><i class="fa fa-check"></i><b>6.3</b> Segemented bar plot, appealing viz</a></li>
-<li class="chapter" data-level="6.4" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#scatter-plot"><i class="fa fa-check"></i><b>6.4</b> Scatter plot</a></li>
-<li class="chapter" data-level="6.5" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#grouping-using-facets"><i class="fa fa-check"></i><b>6.5</b> Grouping using facets</a></li>
-<li class="chapter" data-level="6.6" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#grouping-using-facets-1"><i class="fa fa-check"></i><b>6.6</b> Grouping using facets</a></li>
+<li class="chapter" data-level="5" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html"><i class="fa fa-check"></i><b>5</b> Multivariate plotting</a><ul>
+<li class="chapter" data-level="5.1" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#bar-plot-with-categories-plot-depth-by-cut"><i class="fa fa-check"></i><b>5.1</b> Bar plot with categories, plot depth by cut</a></li>
+<li class="chapter" data-level="5.2" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#bar-plot-with-categories-side-by-side"><i class="fa fa-check"></i><b>5.2</b> Bar plot with categories, side by side</a></li>
+<li class="chapter" data-level="5.3" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#segemented-bar-plot-appealing-viz"><i class="fa fa-check"></i><b>5.3</b> Segemented bar plot, appealing viz</a></li>
+<li class="chapter" data-level="5.4" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#scatter-plot"><i class="fa fa-check"></i><b>5.4</b> Scatter plot</a></li>
+<li class="chapter" data-level="5.5" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#grouping-using-facets"><i class="fa fa-check"></i><b>5.5</b> Grouping using facets</a></li>
+<li class="chapter" data-level="5.6" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#change-facet-labels"><i class="fa fa-check"></i><b>5.6</b> Change facet labels</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="publication-style-figures-and-saving.html"><a href="publication-style-figures-and-saving.html"><i class="fa fa-check"></i><b>7</b> Publication style figures and saving</a></li>
+<li class="chapter" data-level="6" data-path="publication-style-figures-and-saving.html"><a href="publication-style-figures-and-saving.html"><i class="fa fa-check"></i><b>6</b> Publication style figures and saving</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -184,124 +185,124 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="plotting-using-one-variable-at-a-time" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Plotting using one variable at a time</h1>
+<h1><span class="header-section-number">Chapter 4</span> Plotting using one variable at a time</h1>
 <div id="histograms--plots-the-distribution-of-a-numerical-variable" class="section level2">
-<h2><span class="header-section-number">5.1</span> Histograms- plots the distribution of a numerical variable</h2>
+<h2><span class="header-section-number">4.1</span> Histograms- plots the distribution of a numerical variable</h2>
 <p>Note the customizations of the histogram:
 1. we colored the bars pretty
 2. ‘alpha’ adds transparency to the object, useful when you have overlapping objects, goes from 0 (transparent) to 1 (opaque)</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="plotting-using-one-variable-at-a-time.html#cb23-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb23-2"><a href="plotting-using-one-variable-at-a-time.html#cb23-2"></a></span>
-<span id="cb23-3"><a href="plotting-using-one-variable-at-a-time.html#cb23-3"></a><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(weight))<span class="op">+</span></span>
-<span id="cb23-4"><a href="plotting-using-one-variable-at-a-time.html#cb23-4"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">fill=</span><span class="st">&#39;cyan4&#39;</span>,<span class="dt">color=</span><span class="st">&#39;black&#39;</span>,<span class="dt">alpha=</span><span class="fl">0.5</span>)<span class="op">+</span></span>
-<span id="cb23-5"><a href="plotting-using-one-variable-at-a-time.html#cb23-5"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
-<span id="cb23-6"><a href="plotting-using-one-variable-at-a-time.html#cb23-6"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Frequency&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Weight (g)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="plotting-using-one-variable-at-a-time.html#cb24-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb24-2"><a href="plotting-using-one-variable-at-a-time.html#cb24-2"></a></span>
+<span id="cb24-3"><a href="plotting-using-one-variable-at-a-time.html#cb24-3"></a><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(weight))<span class="op">+</span></span>
+<span id="cb24-4"><a href="plotting-using-one-variable-at-a-time.html#cb24-4"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">fill=</span><span class="st">&#39;cyan4&#39;</span>,<span class="dt">color=</span><span class="st">&#39;black&#39;</span>,<span class="dt">alpha=</span><span class="fl">0.5</span>)<span class="op">+</span></span>
+<span id="cb24-5"><a href="plotting-using-one-variable-at-a-time.html#cb24-5"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
+<span id="cb24-6"><a href="plotting-using-one-variable-at-a-time.html#cb24-6"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Frequency&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Weight (g)&quot;</span>)</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-16"></span>
-<img src="plotting_r_files/figure-html/unnamed-chunk-16-1.png" alt="Histogram" width="80%" />
-<p class="caption">
-Figure 5.1: Histogram
-</p>
-</div>
-<p>Improving ‘binwidth’ value, it is the number of categories data is divided into and usually defaults to 30, but we can go up and down, let’s go to 50 here</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="plotting-using-one-variable-at-a-time.html#cb25-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb25-2"><a href="plotting-using-one-variable-at-a-time.html#cb25-2"></a></span>
-<span id="cb25-3"><a href="plotting-using-one-variable-at-a-time.html#cb25-3"></a><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(weight))<span class="op">+</span></span>
-<span id="cb25-4"><a href="plotting-using-one-variable-at-a-time.html#cb25-4"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">fill=</span><span class="st">&#39;cyan4&#39;</span>,<span class="dt">color=</span><span class="st">&#39;black&#39;</span>,<span class="dt">alpha=</span><span class="fl">0.5</span>, <span class="dt">binwidth =</span> <span class="dv">50</span>)<span class="op">+</span></span>
-<span id="cb25-5"><a href="plotting-using-one-variable-at-a-time.html#cb25-5"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
-<span id="cb25-6"><a href="plotting-using-one-variable-at-a-time.html#cb25-6"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Frequency&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Weight (g)&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-17"></span>
 <img src="plotting_r_files/figure-html/unnamed-chunk-17-1.png" alt="Histogram" width="80%" />
 <p class="caption">
-Figure 5.2: Histogram
+Figure 4.1: Histogram
+</p>
+</div>
+<p>Improving ‘binwidth’ value, it is the number of categories data is divided into and usually defaults to 30, but we can go up and down, let’s go to 50 here</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="plotting-using-one-variable-at-a-time.html#cb26-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb26-2"><a href="plotting-using-one-variable-at-a-time.html#cb26-2"></a></span>
+<span id="cb26-3"><a href="plotting-using-one-variable-at-a-time.html#cb26-3"></a><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(weight))<span class="op">+</span></span>
+<span id="cb26-4"><a href="plotting-using-one-variable-at-a-time.html#cb26-4"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">fill=</span><span class="st">&#39;cyan4&#39;</span>,<span class="dt">color=</span><span class="st">&#39;black&#39;</span>,<span class="dt">alpha=</span><span class="fl">0.5</span>, <span class="dt">binwidth =</span> <span class="dv">50</span>)<span class="op">+</span></span>
+<span id="cb26-5"><a href="plotting-using-one-variable-at-a-time.html#cb26-5"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
+<span id="cb26-6"><a href="plotting-using-one-variable-at-a-time.html#cb26-6"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Frequency&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Weight (g)&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-18"></span>
+<img src="plotting_r_files/figure-html/unnamed-chunk-18-1.png" alt="Histogram" width="80%" />
+<p class="caption">
+Figure 4.2: Histogram
 </p>
 </div>
 </div>
 <div id="bar-plots" class="section level2">
-<h2><span class="header-section-number">5.2</span> Bar plots</h2>
+<h2><span class="header-section-number">4.2</span> Bar plots</h2>
 <p>Plot the distribution of a categorical variable</p>
 <p>Here we will plot number of chicks following a particular diet.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="plotting-using-one-variable-at-a-time.html#cb26-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb26-2"><a href="plotting-using-one-variable-at-a-time.html#cb26-2"></a></span>
-<span id="cb26-3"><a href="plotting-using-one-variable-at-a-time.html#cb26-3"></a><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(<span class="dt">x=</span> Diet))<span class="op">+</span></span>
-<span id="cb26-4"><a href="plotting-using-one-variable-at-a-time.html#cb26-4"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">color=</span><span class="st">&#39;orange&#39;</span>, <span class="dt">fill=</span><span class="st">&#39;lavender&#39;</span>)<span class="op">+</span></span>
-<span id="cb26-5"><a href="plotting-using-one-variable-at-a-time.html#cb26-5"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
-<span id="cb26-6"><a href="plotting-using-one-variable-at-a-time.html#cb26-6"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Diet&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-18"></span>
-<img src="plotting_r_files/figure-html/unnamed-chunk-18-1.png" alt="Bar plot" width="80%" />
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="plotting-using-one-variable-at-a-time.html#cb27-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb27-2"><a href="plotting-using-one-variable-at-a-time.html#cb27-2"></a></span>
+<span id="cb27-3"><a href="plotting-using-one-variable-at-a-time.html#cb27-3"></a><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(<span class="dt">x=</span> Diet))<span class="op">+</span></span>
+<span id="cb27-4"><a href="plotting-using-one-variable-at-a-time.html#cb27-4"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">color=</span><span class="st">&#39;orange&#39;</span>, <span class="dt">fill=</span><span class="st">&#39;lavender&#39;</span>)<span class="op">+</span></span>
+<span id="cb27-5"><a href="plotting-using-one-variable-at-a-time.html#cb27-5"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
+<span id="cb27-6"><a href="plotting-using-one-variable-at-a-time.html#cb27-6"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Diet&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-19"></span>
+<img src="plotting_r_files/figure-html/unnamed-chunk-19-1.png" alt="Bar plot" width="80%" />
 <p class="caption">
-Figure 5.3: Bar plot
+Figure 4.3: Bar plot
 </p>
 </div>
 </div>
 <div id="ordering-based-on-number-of-counts-from-lowest-to-highest" class="section level2">
-<h2><span class="header-section-number">5.3</span> Ordering based on number of counts from lowest to highest</h2>
+<h2><span class="header-section-number">4.3</span> Ordering based on number of counts from lowest to highest</h2>
 <p>Let’s bring the magic of dplyer to do so</p>
 <p>So we reorganize the data to calcualte number of chicks on each diet type</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="plotting-using-one-variable-at-a-time.html#cb27-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb27-2"><a href="plotting-using-one-variable-at-a-time.html#cb27-2"></a>reord.chick&lt;-ChickWeight <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb27-3"><a href="plotting-using-one-variable-at-a-time.html#cb27-3"></a><span class="st"> </span><span class="kw">count</span>(Diet) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(n)</span>
-<span id="cb27-4"><a href="plotting-using-one-variable-at-a-time.html#cb27-4"></a>reord.chick</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="plotting-using-one-variable-at-a-time.html#cb28-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb28-2"><a href="plotting-using-one-variable-at-a-time.html#cb28-2"></a>reord.chick&lt;-ChickWeight <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb28-3"><a href="plotting-using-one-variable-at-a-time.html#cb28-3"></a><span class="st"> </span><span class="kw">count</span>(Diet) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(n)</span>
+<span id="cb28-4"><a href="plotting-using-one-variable-at-a-time.html#cb28-4"></a>reord.chick</span></code></pre></div>
 <pre><code>##   Diet   n
 ## 1    4 118
 ## 2    2 120
 ## 3    3 120
 ## 4    1 220</code></pre>
 <p>Here we plot using geom_col function where heights represents the value of the data and requires y aesthetics. We can use geom_text function to add the label to each column and use vjust to move the labels up and down</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="plotting-using-one-variable-at-a-time.html#cb29-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb29-2"><a href="plotting-using-one-variable-at-a-time.html#cb29-2"></a></span>
-<span id="cb29-3"><a href="plotting-using-one-variable-at-a-time.html#cb29-3"></a><span class="kw">ggplot</span>(reord.chick, <span class="kw">aes</span>(<span class="dt">x=</span> <span class="kw">reorder</span>(Diet,n), <span class="dt">y=</span>n))<span class="op">+</span></span>
-<span id="cb29-4"><a href="plotting-using-one-variable-at-a-time.html#cb29-4"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">color=</span><span class="st">&#39;orange&#39;</span>, <span class="dt">fill=</span><span class="st">&#39;lavender&#39;</span>)<span class="op">+</span></span>
-<span id="cb29-5"><a href="plotting-using-one-variable-at-a-time.html#cb29-5"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span>n), <span class="dt">vjust=</span><span class="op">-</span><span class="fl">0.7</span>)<span class="op">+</span></span>
-<span id="cb29-6"><a href="plotting-using-one-variable-at-a-time.html#cb29-6"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
-<span id="cb29-7"><a href="plotting-using-one-variable-at-a-time.html#cb29-7"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Diet&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-20"></span>
-<img src="plotting_r_files/figure-html/unnamed-chunk-20-1.png" alt="Bar plot with labels" width="80%" />
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="plotting-using-one-variable-at-a-time.html#cb30-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb30-2"><a href="plotting-using-one-variable-at-a-time.html#cb30-2"></a></span>
+<span id="cb30-3"><a href="plotting-using-one-variable-at-a-time.html#cb30-3"></a><span class="kw">ggplot</span>(reord.chick, <span class="kw">aes</span>(<span class="dt">x=</span> <span class="kw">reorder</span>(Diet,n), <span class="dt">y=</span>n))<span class="op">+</span></span>
+<span id="cb30-4"><a href="plotting-using-one-variable-at-a-time.html#cb30-4"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">color=</span><span class="st">&#39;orange&#39;</span>, <span class="dt">fill=</span><span class="st">&#39;lavender&#39;</span>)<span class="op">+</span></span>
+<span id="cb30-5"><a href="plotting-using-one-variable-at-a-time.html#cb30-5"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span>n), <span class="dt">vjust=</span><span class="op">-</span><span class="fl">0.7</span>)<span class="op">+</span></span>
+<span id="cb30-6"><a href="plotting-using-one-variable-at-a-time.html#cb30-6"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
+<span id="cb30-7"><a href="plotting-using-one-variable-at-a-time.html#cb30-7"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Diet&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-21"></span>
+<img src="plotting_r_files/figure-html/unnamed-chunk-21-1.png" alt="Bar plot with labels" width="80%" />
 <p class="caption">
-Figure 5.4: Bar plot with labels
+Figure 4.4: Bar plot with labels
 </p>
 </div>
 </div>
 <div id="adding-percentages" class="section level2">
-<h2><span class="header-section-number">5.4</span> Adding percentages</h2>
+<h2><span class="header-section-number">4.4</span> Adding percentages</h2>
 <p>Here we also get more adventerous with data wrangling and create new columns and plot them within the same pipe</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="plotting-using-one-variable-at-a-time.html#cb30-1"></a>ChickWeight <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb30-2"><a href="plotting-using-one-variable-at-a-time.html#cb30-2"></a><span class="st">  </span><span class="kw">count</span>(Diet) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(n) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb30-3"><a href="plotting-using-one-variable-at-a-time.html#cb30-3"></a><span class="kw">mutate</span>(<span class="dt">percent =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n),</span>
-<span id="cb30-4"><a href="plotting-using-one-variable-at-a-time.html#cb30-4"></a>         <span class="dt">percentlabel =</span> <span class="kw">paste0</span>(<span class="kw">round</span>(percent<span class="op">*</span><span class="dv">100</span>), <span class="st">&quot;%&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb30-5"><a href="plotting-using-one-variable-at-a-time.html#cb30-5"></a></span>
-<span id="cb30-6"><a href="plotting-using-one-variable-at-a-time.html#cb30-6"></a><span class="kw">ggplot</span>( <span class="kw">aes</span>(<span class="dt">x=</span> <span class="kw">reorder</span>(Diet,percent), <span class="dt">y=</span>percent))<span class="op">+</span></span>
-<span id="cb30-7"><a href="plotting-using-one-variable-at-a-time.html#cb30-7"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">color=</span><span class="st">&#39;orange&#39;</span>, <span class="dt">fill=</span><span class="st">&#39;lavender&#39;</span>)<span class="op">+</span></span>
-<span id="cb30-8"><a href="plotting-using-one-variable-at-a-time.html#cb30-8"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span>percentlabel), <span class="dt">vjust=</span><span class="op">-</span><span class="fl">0.7</span>)<span class="op">+</span></span>
-<span id="cb30-9"><a href="plotting-using-one-variable-at-a-time.html#cb30-9"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
-<span id="cb30-10"><a href="plotting-using-one-variable-at-a-time.html#cb30-10"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Diet&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-21"></span>
-<img src="plotting_r_files/figure-html/unnamed-chunk-21-1.png" alt="Bar plot with percent labels" width="80%" />
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="plotting-using-one-variable-at-a-time.html#cb31-1"></a>ChickWeight <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb31-2"><a href="plotting-using-one-variable-at-a-time.html#cb31-2"></a><span class="st">  </span><span class="kw">count</span>(Diet) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(n) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb31-3"><a href="plotting-using-one-variable-at-a-time.html#cb31-3"></a><span class="kw">mutate</span>(<span class="dt">percent =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n),</span>
+<span id="cb31-4"><a href="plotting-using-one-variable-at-a-time.html#cb31-4"></a>         <span class="dt">percentlabel =</span> <span class="kw">paste0</span>(<span class="kw">round</span>(percent<span class="op">*</span><span class="dv">100</span>), <span class="st">&quot;%&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb31-5"><a href="plotting-using-one-variable-at-a-time.html#cb31-5"></a></span>
+<span id="cb31-6"><a href="plotting-using-one-variable-at-a-time.html#cb31-6"></a><span class="kw">ggplot</span>( <span class="kw">aes</span>(<span class="dt">x=</span> <span class="kw">reorder</span>(Diet,percent), <span class="dt">y=</span>percent))<span class="op">+</span></span>
+<span id="cb31-7"><a href="plotting-using-one-variable-at-a-time.html#cb31-7"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">color=</span><span class="st">&#39;orange&#39;</span>, <span class="dt">fill=</span><span class="st">&#39;lavender&#39;</span>)<span class="op">+</span></span>
+<span id="cb31-8"><a href="plotting-using-one-variable-at-a-time.html#cb31-8"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span>percentlabel), <span class="dt">vjust=</span><span class="op">-</span><span class="fl">0.7</span>)<span class="op">+</span></span>
+<span id="cb31-9"><a href="plotting-using-one-variable-at-a-time.html#cb31-9"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
+<span id="cb31-10"><a href="plotting-using-one-variable-at-a-time.html#cb31-10"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Diet&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-22"></span>
+<img src="plotting_r_files/figure-html/unnamed-chunk-22-1.png" alt="Bar plot with percent labels" width="80%" />
 <p class="caption">
-Figure 5.5: Bar plot with percent labels
+Figure 4.5: Bar plot with percent labels
 </p>
 </div>
 </div>
 <div id="pie-chart" class="section level2">
-<h2><span class="header-section-number">5.5</span> pie chart</h2>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="plotting-using-one-variable-at-a-time.html#cb31-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb31-2"><a href="plotting-using-one-variable-at-a-time.html#cb31-2"></a></span>
-<span id="cb31-3"><a href="plotting-using-one-variable-at-a-time.html#cb31-3"></a><span class="kw">ggplot</span>(reord.chick, <span class="kw">aes</span>(<span class="dt">x=</span> <span class="kw">reorder</span>(Diet,n), <span class="dt">y=</span>n,<span class="dt">fill=</span>Diet))<span class="op">+</span></span>
-<span id="cb31-4"><a href="plotting-using-one-variable-at-a-time.html#cb31-4"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">width =</span> <span class="dv">1</span>, </span>
-<span id="cb31-5"><a href="plotting-using-one-variable-at-a-time.html#cb31-5"></a>           <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, </span>
-<span id="cb31-6"><a href="plotting-using-one-variable-at-a-time.html#cb31-6"></a>           <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span></span>
-<span id="cb31-7"><a href="plotting-using-one-variable-at-a-time.html#cb31-7"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span>n), <span class="dt">vjust=</span><span class="op">-</span><span class="fl">0.7</span>)<span class="op">+</span></span>
-<span id="cb31-8"><a href="plotting-using-one-variable-at-a-time.html#cb31-8"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
-<span id="cb31-9"><a href="plotting-using-one-variable-at-a-time.html#cb31-9"></a><span class="st">  </span><span class="kw">coord_polar</span>(<span class="st">&quot;y&quot;</span>, </span>
-<span id="cb31-10"><a href="plotting-using-one-variable-at-a-time.html#cb31-10"></a>              <span class="dt">start =</span> <span class="dv">0</span>, </span>
-<span id="cb31-11"><a href="plotting-using-one-variable-at-a-time.html#cb31-11"></a>              <span class="dt">direction =</span> <span class="dv">-1</span>) <span class="op">+</span></span>
-<span id="cb31-12"><a href="plotting-using-one-variable-at-a-time.html#cb31-12"></a><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span></span>
-<span id="cb31-13"><a href="plotting-using-one-variable-at-a-time.html#cb31-13"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Diet&quot;</span>)</span></code></pre></div>
+<h2><span class="header-section-number">4.5</span> pie chart</h2>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="plotting-using-one-variable-at-a-time.html#cb32-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb32-2"><a href="plotting-using-one-variable-at-a-time.html#cb32-2"></a></span>
+<span id="cb32-3"><a href="plotting-using-one-variable-at-a-time.html#cb32-3"></a><span class="kw">ggplot</span>(reord.chick, <span class="kw">aes</span>(<span class="dt">x=</span> <span class="kw">reorder</span>(Diet,n), <span class="dt">y=</span>n,<span class="dt">fill=</span>Diet))<span class="op">+</span></span>
+<span id="cb32-4"><a href="plotting-using-one-variable-at-a-time.html#cb32-4"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">width =</span> <span class="dv">1</span>, </span>
+<span id="cb32-5"><a href="plotting-using-one-variable-at-a-time.html#cb32-5"></a>           <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, </span>
+<span id="cb32-6"><a href="plotting-using-one-variable-at-a-time.html#cb32-6"></a>           <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span></span>
+<span id="cb32-7"><a href="plotting-using-one-variable-at-a-time.html#cb32-7"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span>n), <span class="dt">vjust=</span><span class="op">-</span><span class="fl">0.7</span>)<span class="op">+</span></span>
+<span id="cb32-8"><a href="plotting-using-one-variable-at-a-time.html#cb32-8"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
+<span id="cb32-9"><a href="plotting-using-one-variable-at-a-time.html#cb32-9"></a><span class="st">  </span><span class="kw">coord_polar</span>(<span class="st">&quot;y&quot;</span>, </span>
+<span id="cb32-10"><a href="plotting-using-one-variable-at-a-time.html#cb32-10"></a>              <span class="dt">start =</span> <span class="dv">0</span>,<span class="dt">direction =</span> <span class="dv">-1</span> </span>
+<span id="cb32-11"><a href="plotting-using-one-variable-at-a-time.html#cb32-11"></a>              ) <span class="op">+</span></span>
+<span id="cb32-12"><a href="plotting-using-one-variable-at-a-time.html#cb32-12"></a><span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span></span>
+<span id="cb32-13"><a href="plotting-using-one-variable-at-a-time.html#cb32-13"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Diet&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: Ignoring unknown parameters: stat</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-22"></span>
-<img src="plotting_r_files/figure-html/unnamed-chunk-22-1.png" alt="Pie chart with labels " width="80%" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-23"></span>
+<img src="plotting_r_files/figure-html/unnamed-chunk-23-1.png" alt="Pie chart with labels " width="80%" />
 <p class="caption">
-Figure 5.6: Pie chart with labels
+Figure 4.6: Pie chart with labels
 </p>
 </div>
 
@@ -312,7 +313,7 @@ Figure 5.6: Pie chart with labels
           </div>
         </div>
       </div>
-<a href="you-can-also-create-and-save-a-theme-for-entire-project.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction-to-ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="multivariate-plotting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

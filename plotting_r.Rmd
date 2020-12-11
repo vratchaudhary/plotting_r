@@ -100,7 +100,6 @@ head(relig_income.back)
 ```
 
 
-
 <!--chapter:end:01-intro.Rmd-->
 
 # Introduction to ggplot2
@@ -183,7 +182,7 @@ ggplot(ChickWeight, aes(x=Time, y=weight, color=Chick),size=2)+
   ylab("Weight")+theme(axis.title.x = element_text( angle=40,vjust=0.2,color='blue',family="Comic Sans MS"))+
   theme(axis.title.y =  element_text( color='purple',family="serif"))
 ```
-# You can also create and save a theme for entire project
+## You can also create and save a theme for entire project
 
 ```{r, fig.cap='change label font', out.width='80%', fig.asp=.75, fig.align='center'}
 theme_set<-function(){ theme_bw(base_size = 20)+
@@ -194,6 +193,25 @@ theme_set<-function(){ theme_bw(base_size = 20)+
 ggplot(ChickWeight, aes(x=Time, y=weight, color=Chick),size=2)+
   geom_line()+theme_set()
 ```
+
+## Changing colors manually and add error bars
+
+Lets plot the mean chick weight over time for each type of diet
+
+```{r, fig.cap='change label font', out.width='80%', fig.asp=.75, fig.align='center'}
+
+ChickWeight %>% group_by(Diet,Time) %>% mutate(mean.wt=mean(weight), 
+                  se.weight= (sd(weight)) / sqrt((length(weight)))) %>% 
+                 ggplot() + 
+              geom_line(aes(x=Time, y=mean.wt, color=Diet,lty=Diet),size=2)+
+            geom_ribbon(aes(x=Time, ymax=mean.wt+se.weight,ymin= mean.wt-se.weight,group=Diet,fill=Diet),size=2,alpha=0.2)+
+              scale_color_manual(values=c("cyan1","cyan4","green","orange"))+
+            scale_fill_manual(values=c("cyan1","cyan4","green","orange"))+
+              ggpubr::theme_pubr(base_size = 20)+
+                ylab("Mean weight")
+                     
+```
+
 
 <!--chapter:end:02-literature.Rmd-->
 
@@ -297,8 +315,8 @@ ggplot(reord.chick, aes(x= reorder(Diet,n), y=n,fill=Diet))+
   geom_text(aes(label=n), vjust=-0.7)+
   theme_minimal(base_size = 20)+
   coord_polar("y", 
-              start = 0, 
-              direction = -1) +
+              start = 0,direction = -1 
+              ) +
   theme_void() +
   ylab("Count")+ xlab("Diet")
 
@@ -341,9 +359,11 @@ ggplot(diamonds)+
 ggplot(diamonds)+
  geom_bar(aes(x= cut, fill=color),position = position_dodge())+
   theme_minimal(base_size = 20)+
-  ylab("Count")+ xlab("Cut")
+  ylab("Count")+ xlab("Cut")+
+  scale_x_discrete(guide = guide_axis(n.dodge = 2)) # when the axis text are overlapping, this can help
 
 ```
+
 
 ## Segemented bar plot, appealing viz
 
@@ -405,7 +425,7 @@ Let's see if the Carat is related to price
 
 ```
 
-## Grouping using facets
+## Change facet labels
 ```{r, fig.cap='Scatter plot with facets and different labels', out.width='80%', fig.asp=.75, fig.align='center'}
 
 diamonds2<-diamonds
