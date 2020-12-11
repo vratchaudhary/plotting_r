@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Multivariate plotting | Plotting in R using ggplot</title>
+  <meta name="description" content="This is a practical example of creating impactful visualizations for presenting results of scientific data analysis. Examples mainly use ggplot2 package in R." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Multivariate plotting | Plotting in R using ggplot" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a practical example of creating impactful visualizations for presenting results of scientific data analysis. Examples mainly use ggplot2 package in R." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Multivariate plotting | Plotting in R using ggplot" />
+  
+  <meta name="twitter:description" content="This is a practical example of creating impactful visualizations for presenting results of scientific data analysis. Examples mainly use ggplot2 package in R." />
+  
+
+<meta name="author" content="Vratika Chaudhary" />
+
+
+<meta name="date" content="2020-12-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="plotting-using-one-variable-at-a-time.html"/>
+<link rel="next" href="publication-style-figures-and-saving.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Plotting in R with ggplot</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Data preperation</a></li>
+<li class="chapter" data-level="3" data-path="introduction-to-ggplot2.html"><a href="introduction-to-ggplot2.html"><i class="fa fa-check"></i><b>3</b> Introduction to ggplot2</a><ul>
+<li class="chapter" data-level="3.1" data-path="introduction-to-ggplot2.html"><a href="introduction-to-ggplot2.html#creating-the-building-blocks-of-the-graph"><i class="fa fa-check"></i><b>3.1</b> Creating the building blocks of the graph</a></li>
+<li class="chapter" data-level="3.2" data-path="introduction-to-ggplot2.html"><a href="introduction-to-ggplot2.html#adding-geom_objects"><i class="fa fa-check"></i><b>3.2</b> Adding geom_objects</a></li>
+<li class="chapter" data-level="3.3" data-path="introduction-to-ggplot2.html"><a href="introduction-to-ggplot2.html#making-the-plot-visually-more-appealing"><i class="fa fa-check"></i><b>3.3</b> Making the plot visually more appealing</a></li>
+<li class="chapter" data-level="3.4" data-path="introduction-to-ggplot2.html"><a href="introduction-to-ggplot2.html#lets-make-the-plot-colorful"><i class="fa fa-check"></i><b>3.4</b> Let’s make the plot colorful</a></li>
+<li class="chapter" data-level="3.5" data-path="introduction-to-ggplot2.html"><a href="introduction-to-ggplot2.html#change-label-fonts-color-angle-etc"><i class="fa fa-check"></i><b>3.5</b> Change label fonts, color, angle etc</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="you-can-also-create-and-save-a-theme-for-entire-project.html"><a href="you-can-also-create-and-save-a-theme-for-entire-project.html"><i class="fa fa-check"></i><b>4</b> You can also create and save a theme for entire project</a></li>
+<li class="chapter" data-level="5" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html"><i class="fa fa-check"></i><b>5</b> Plotting using one variable at a time</a><ul>
+<li class="chapter" data-level="5.1" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html#histograms--plots-the-distribution-of-a-numerical-variable"><i class="fa fa-check"></i><b>5.1</b> Histograms- plots the distribution of a numerical variable</a></li>
+<li class="chapter" data-level="5.2" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html#bar-plots"><i class="fa fa-check"></i><b>5.2</b> Bar plots</a></li>
+<li class="chapter" data-level="5.3" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html#ordering-based-on-number-of-counts-from-lowest-to-highest"><i class="fa fa-check"></i><b>5.3</b> Ordering based on number of counts from lowest to highest</a></li>
+<li class="chapter" data-level="5.4" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html#adding-percentages"><i class="fa fa-check"></i><b>5.4</b> Adding percentages</a></li>
+<li class="chapter" data-level="5.5" data-path="plotting-using-one-variable-at-a-time.html"><a href="plotting-using-one-variable-at-a-time.html#pie-chart"><i class="fa fa-check"></i><b>5.5</b> pie chart</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html"><i class="fa fa-check"></i><b>6</b> Multivariate plotting</a><ul>
+<li class="chapter" data-level="6.1" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#bar-plot-with-categories-plot-depth-by-cut"><i class="fa fa-check"></i><b>6.1</b> Bar plot with categories, plot depth by cut</a></li>
+<li class="chapter" data-level="6.2" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#bar-plot-with-categories-side-by-side"><i class="fa fa-check"></i><b>6.2</b> Bar plot with categories, side by side</a></li>
+<li class="chapter" data-level="6.3" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#segemented-bar-plot-appealing-viz"><i class="fa fa-check"></i><b>6.3</b> Segemented bar plot, appealing viz</a></li>
+<li class="chapter" data-level="6.4" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#scatter-plot"><i class="fa fa-check"></i><b>6.4</b> Scatter plot</a></li>
+<li class="chapter" data-level="6.5" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#grouping-using-facets"><i class="fa fa-check"></i><b>6.5</b> Grouping using facets</a></li>
+<li class="chapter" data-level="6.6" data-path="multivariate-plotting.html"><a href="multivariate-plotting.html#grouping-using-facets-1"><i class="fa fa-check"></i><b>6.6</b> Grouping using facets</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="publication-style-figures-and-saving.html"><a href="publication-style-figures-and-saving.html"><i class="fa fa-check"></i><b>7</b> Publication style figures and saving</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Plotting in R using ggplot</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multivariate-plotting" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Multivariate plotting</h1>
+<p>Now we will plot using multiple variables</p>
+<p>Let’s use diamond dataset from tidyr</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="multivariate-plotting.html#cb33-1"></a><span class="kw">data</span>(<span class="st">&quot;diamonds&quot;</span>)</span>
+<span id="cb33-2"><a href="multivariate-plotting.html#cb33-2"></a><span class="kw">head</span>(diamonds)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 10
+##   carat cut       color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+## 2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+## 3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+## 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+## 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+## 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48</code></pre>
+<div id="bar-plot-with-categories-plot-depth-by-cut" class="section level2">
+<h2><span class="header-section-number">6.1</span> Bar plot with categories, plot depth by cut</h2>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="multivariate-plotting.html#cb35-1"></a><span class="kw">ggplot</span>(diamonds)<span class="op">+</span></span>
+<span id="cb35-2"><a href="multivariate-plotting.html#cb35-2"></a><span class="st"> </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x=</span> cut, <span class="dt">fill=</span>color))<span class="op">+</span></span>
+<span id="cb35-3"><a href="multivariate-plotting.html#cb35-3"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
+<span id="cb35-4"><a href="multivariate-plotting.html#cb35-4"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Cut&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-24"></span>
+<img src="plotting_r_files/figure-html/unnamed-chunk-24-1.png" alt="Bar plot with grouping" width="100%" />
+<p class="caption">
+Figure 6.1: Bar plot with grouping
+</p>
+</div>
+</div>
+<div id="bar-plot-with-categories-side-by-side" class="section level2">
+<h2><span class="header-section-number">6.2</span> Bar plot with categories, side by side</h2>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="multivariate-plotting.html#cb36-1"></a><span class="kw">ggplot</span>(diamonds)<span class="op">+</span></span>
+<span id="cb36-2"><a href="multivariate-plotting.html#cb36-2"></a><span class="st"> </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x=</span> cut, <span class="dt">fill=</span>color),<span class="dt">position =</span> <span class="kw">position_dodge</span>())<span class="op">+</span></span>
+<span id="cb36-3"><a href="multivariate-plotting.html#cb36-3"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
+<span id="cb36-4"><a href="multivariate-plotting.html#cb36-4"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Cut&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-25"></span>
+<img src="plotting_r_files/figure-html/unnamed-chunk-25-1.png" alt="Bar plot with grouping" width="100%" />
+<p class="caption">
+Figure 6.2: Bar plot with grouping
+</p>
+</div>
+</div>
+<div id="segemented-bar-plot-appealing-viz" class="section level2">
+<h2><span class="header-section-number">6.3</span> Segemented bar plot, appealing viz</h2>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="multivariate-plotting.html#cb37-1"></a>diamonds <span class="op">%&gt;%</span></span>
+<span id="cb37-2"><a href="multivariate-plotting.html#cb37-2"></a><span class="st">  </span><span class="kw">group_by</span>(cut, color) <span class="op">%&gt;%</span></span>
+<span id="cb37-3"><a href="multivariate-plotting.html#cb37-3"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb37-4"><a href="multivariate-plotting.html#cb37-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prct =</span> n<span class="op">/</span><span class="kw">sum</span>(n),</span>
+<span id="cb37-5"><a href="multivariate-plotting.html#cb37-5"></a>         <span class="dt">label =</span> scales<span class="op">::</span><span class="kw">percent</span>(prct)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb37-6"><a href="multivariate-plotting.html#cb37-6"></a><span class="st">         </span><span class="kw">ggplot</span>()<span class="op">+</span></span>
+<span id="cb37-7"><a href="multivariate-plotting.html#cb37-7"></a><span class="st">          </span><span class="kw">geom_col</span>(<span class="kw">aes</span>(<span class="dt">x=</span>cut,<span class="dt">y=</span>prct,<span class="dt">fill=</span>color),<span class="dt">position=</span><span class="st">&#39;fill&#39;</span>)<span class="op">+</span></span>
+<span id="cb37-8"><a href="multivariate-plotting.html#cb37-8"></a><span class="st">          </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">x=</span>cut,<span class="dt">y=</span>prct,<span class="dt">label =</span> label), </span>
+<span id="cb37-9"><a href="multivariate-plotting.html#cb37-9"></a>            <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">color=</span><span class="st">&#39;white&#39;</span>,</span>
+<span id="cb37-10"><a href="multivariate-plotting.html#cb37-10"></a>            <span class="dt">position =</span> <span class="kw">position_stack</span>(<span class="dt">vjust =</span> <span class="fl">0.5</span>)) <span class="op">+</span></span>
+<span id="cb37-11"><a href="multivariate-plotting.html#cb37-11"></a><span class="st">             </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
+<span id="cb37-12"><a href="multivariate-plotting.html#cb37-12"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Percentage&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Cut&quot;</span>)</span></code></pre></div>
+<pre><code>## `summarise()` regrouping output by &#39;cut&#39; (override with `.groups` argument)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-26"></span>
+<img src="plotting_r_files/figure-html/unnamed-chunk-26-1.png" alt="Bar plot with segments" width="75%" />
+<p class="caption">
+Figure 6.3: Bar plot with segments
+</p>
+</div>
+</div>
+<div id="scatter-plot" class="section level2">
+<h2><span class="header-section-number">6.4</span> Scatter plot</h2>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="multivariate-plotting.html#cb39-1"></a>         <span class="kw">ggplot</span>(diamonds)<span class="op">+</span></span>
+<span id="cb39-2"><a href="multivariate-plotting.html#cb39-2"></a><span class="st">          </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>carat,<span class="dt">y=</span>price,<span class="dt">color=</span>color))<span class="op">+</span></span>
+<span id="cb39-3"><a href="multivariate-plotting.html#cb39-3"></a><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
+<span id="cb39-4"><a href="multivariate-plotting.html#cb39-4"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Carat&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Price&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-27"></span>
+<img src="plotting_r_files/figure-html/unnamed-chunk-27-1.png" alt="Scatter plot with grouping" width="80%" />
+<p class="caption">
+Figure 6.4: Scatter plot with grouping
+</p>
+</div>
+<p>Let’s see if the Carat is related to price</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="multivariate-plotting.html#cb40-1"></a>         <span class="kw">ggplot</span>(diamonds)<span class="op">+</span></span>
+<span id="cb40-2"><a href="multivariate-plotting.html#cb40-2"></a><span class="st">          </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>carat,<span class="dt">y=</span>price,<span class="dt">color=</span>color))<span class="op">+</span></span>
+<span id="cb40-3"><a href="multivariate-plotting.html#cb40-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">x=</span>carat,<span class="dt">y=</span>price,<span class="dt">color=</span>color),<span class="dt">method=</span><span class="st">&#39;lm&#39;</span>)<span class="op">+</span></span>
+<span id="cb40-4"><a href="multivariate-plotting.html#cb40-4"></a><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
+<span id="cb40-5"><a href="multivariate-plotting.html#cb40-5"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Carat&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Price&quot;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-28"></span>
+<img src="plotting_r_files/figure-html/unnamed-chunk-28-1.png" alt="Scatter plot with grouping and smooth line" width="80%" />
+<p class="caption">
+Figure 6.5: Scatter plot with grouping and smooth line
+</p>
+</div>
+</div>
+<div id="grouping-using-facets" class="section level2">
+<h2><span class="header-section-number">6.5</span> Grouping using facets</h2>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="multivariate-plotting.html#cb42-1"></a>         <span class="kw">ggplot</span>(diamonds)<span class="op">+</span></span>
+<span id="cb42-2"><a href="multivariate-plotting.html#cb42-2"></a><span class="st">          </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>carat,<span class="dt">y=</span>price))<span class="op">+</span></span>
+<span id="cb42-3"><a href="multivariate-plotting.html#cb42-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">x=</span>carat,<span class="dt">y=</span>price),<span class="dt">method=</span><span class="st">&#39;lm&#39;</span>)<span class="op">+</span></span>
+<span id="cb42-4"><a href="multivariate-plotting.html#cb42-4"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>color)<span class="op">+</span></span>
+<span id="cb42-5"><a href="multivariate-plotting.html#cb42-5"></a><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
+<span id="cb42-6"><a href="multivariate-plotting.html#cb42-6"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Carat&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Price&quot;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-29"></span>
+<img src="plotting_r_files/figure-html/unnamed-chunk-29-1.png" alt="Scatter plot with facets and smooth line" width="80%" />
+<p class="caption">
+Figure 6.6: Scatter plot with facets and smooth line
+</p>
+</div>
+</div>
+<div id="grouping-using-facets-1" class="section level2">
+<h2><span class="header-section-number">6.6</span> Grouping using facets</h2>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="multivariate-plotting.html#cb44-1"></a>diamonds2&lt;-diamonds</span>
+<span id="cb44-2"><a href="multivariate-plotting.html#cb44-2"></a><span class="kw">levels</span>(diamonds2<span class="op">$</span>color)</span></code></pre></div>
+<pre><code>## [1] &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot;</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="multivariate-plotting.html#cb46-1"></a>diamonds2<span class="op">$</span>color&lt;-<span class="st"> </span><span class="kw">factor</span>(diamonds2<span class="op">$</span>color, <span class="dt">levels =</span><span class="kw">c</span>(<span class="st">&quot;D&quot;</span> ,<span class="st">&quot;E&quot;</span> ,<span class="st">&quot;F&quot;</span> ,<span class="st">&quot;G&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;I&quot;</span>, <span class="st">&quot;J&quot;</span>), </span>
+<span id="cb46-2"><a href="multivariate-plotting.html#cb46-2"></a>                         <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Red&quot;</span>,<span class="st">&quot;Blue&quot;</span>,<span class="st">&quot;Orange&quot;</span>,<span class="st">&quot;Pink&quot;</span>,<span class="st">&quot;Indigo&quot;</span>,<span class="st">&quot;Jade&quot;</span>,<span class="st">&quot;Orange&quot;</span>))</span>
+<span id="cb46-3"><a href="multivariate-plotting.html#cb46-3"></a>         <span class="kw">ggplot</span>(diamonds2)<span class="op">+</span></span>
+<span id="cb46-4"><a href="multivariate-plotting.html#cb46-4"></a><span class="st">          </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>carat,<span class="dt">y=</span>price))<span class="op">+</span></span>
+<span id="cb46-5"><a href="multivariate-plotting.html#cb46-5"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">x=</span>carat,<span class="dt">y=</span>price),<span class="dt">method=</span><span class="st">&#39;lm&#39;</span>)<span class="op">+</span></span>
+<span id="cb46-6"><a href="multivariate-plotting.html#cb46-6"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>color)<span class="op">+</span></span>
+<span id="cb46-7"><a href="multivariate-plotting.html#cb46-7"></a><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
+<span id="cb46-8"><a href="multivariate-plotting.html#cb46-8"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Carat&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Price&quot;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-30"></span>
+<img src="plotting_r_files/figure-html/unnamed-chunk-30-1.png" alt="Scatter plot with facets and different labels" width="80%" />
+<p class="caption">
+Figure 6.7: Scatter plot with facets and different labels
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="plotting-using-one-variable-at-a-time.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="publication-style-figures-and-saving.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["plotting_r.pdf", "plotting_r.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

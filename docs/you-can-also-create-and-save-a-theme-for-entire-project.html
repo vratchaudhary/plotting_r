@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Plotting in R using ggplot</title>
+  <title>Chapter 4 You can also create and save a theme for entire project | Plotting in R using ggplot</title>
   <meta name="description" content="This is a practical example of creating impactful visualizations for presenting results of scientific data analysis. Examples mainly use ggplot2 package in R." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Plotting in R using ggplot" />
+  <meta property="og:title" content="Chapter 4 You can also create and save a theme for entire project | Plotting in R using ggplot" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Plotting in R using ggplot" />
+  <meta name="twitter:title" content="Chapter 4 You can also create and save a theme for entire project | Plotting in R using ggplot" />
   
   <meta name="twitter:description" content="This is a practical example of creating impactful visualizations for presenting results of scientific data analysis. Examples mainly use ggplot2 package in R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="introduction-to-ggplot2.html"/>
+<link rel="next" href="plotting-using-one-variable-at-a-time.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -183,17 +183,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Plotting in R using ggplot</h1>
-<p class="author"><em>Vratika Chaudhary</em></p>
-<p class="date"><em>2020-12-10</em></p>
+<div id="you-can-also-create-and-save-a-theme-for-entire-project" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> You can also create and save a theme for entire project</h1>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="you-can-also-create-and-save-a-theme-for-entire-project.html#cb22-1"></a>theme_set&lt;-<span class="cf">function</span>(){ <span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)<span class="op">+</span></span>
+<span id="cb22-2"><a href="you-can-also-create-and-save-a-theme-for-entire-project.html#cb22-2"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">35</span>,<span class="dt">vjust=</span><span class="fl">0.8</span>,<span class="dt">color=</span><span class="st">&#39;green&#39;</span>))<span class="op">+</span></span>
+<span id="cb22-3"><a href="you-can-also-create-and-save-a-theme-for-entire-project.html#cb22-3"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_blank</span>())}</span>
+<span id="cb22-4"><a href="you-can-also-create-and-save-a-theme-for-entire-project.html#cb22-4"></a></span>
+<span id="cb22-5"><a href="you-can-also-create-and-save-a-theme-for-entire-project.html#cb22-5"></a></span>
+<span id="cb22-6"><a href="you-can-also-create-and-save-a-theme-for-entire-project.html#cb22-6"></a><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(<span class="dt">x=</span>Time, <span class="dt">y=</span>weight, <span class="dt">color=</span>Chick),<span class="dt">size=</span><span class="dv">2</span>)<span class="op">+</span></span>
+<span id="cb22-7"><a href="you-can-also-create-and-save-a-theme-for-entire-project.html#cb22-7"></a><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span><span class="kw">theme_set</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-15"></span>
+<img src="plotting_r_files/figure-html/unnamed-chunk-15-1.png" alt="change label font" width="80%" />
+<p class="caption">
+Figure 4.1: change label font
+</p>
 </div>
-<div id="prerequisites" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Prerequisites</h1>
-<p>R programming language
-Installed packages:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a>pkg&lt;-<span class="kw">c</span>(<span class="st">&quot;ggplot2&quot;</span>,<span class="st">&quot;ggpubr&quot;</span>,<span class="st">&quot;auk&quot;</span>,<span class="st">&quot;datasets&quot;</span>,<span class="st">&quot;ggpubr&quot;</span>,<span class="st">&quot;ggcorrplot&quot;</span>)</span>
-<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="kw">install.packages</span>(pkg)</span></code></pre></div>
 
 </div>
             </section>
@@ -201,8 +205,8 @@ Installed packages:</p>
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introduction-to-ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="plotting-using-one-variable-at-a-time.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

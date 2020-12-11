@@ -34,28 +34,72 @@ knitr::write_bib(c(
 ), 'packages.bib')
 ```
 
+
 <!--chapter:end:index.Rmd-->
 
 # Data preperation {#intro}
 
 
-
+##Data
 We can enter CSV data in R using read.csv function or read_csv function from readr package. However, for now we will use data that already exist in the datasets packages that we downloaded
 
 Lets load the library 'datsets'
-```{r include=TRUE}
+```{r include=FALSE}
 library(datasets)
+library(tidyverse)
 
 
 ```
 
 
-Lets look at the chickeweight data 
+Lets look at the chickweight data 
 
 ```{r include=TRUE}
 head(ChickWeight)
-
+str(ChickWeight)
 ```
+
+##Data manipulation with dplyr and tidyverse
+
+Let us create a column that calculates number of chicks following each type of diet
+
+Lets look at the chickweight data 
+
+```{r include=TRUE}
+ChickWeight2<-ChickWeight %>% 
+                 count(Diet)
+   
+head(ChickWeight2)
+```
+
+Let's look at mean weight of chick in each diet category
+
+```{r include=TRUE}
+ChickWeight3<-ChickWeight %>% 
+              group_by(Diet) %>% 
+              mutate(mean.wt= mean(weight)) # muatate can be used to create new columns
+   
+head(ChickWeight3)
+```
+Let's arrange the data in wide form, ggplot often likes the data to be in long form, that is stacked in rows. 
+For example, here we have Diet in rows.
+
+Let's look at some data in wide form
+```{r include=TRUE}
+head(relig_income)
+```
+Let's arrange so that income is stacked in rows
+```{r include=TRUE}
+relig_income2<-relig_income %>% pivot_longer(!religion, names_to="income",values_to="count")
+head(relig_income2)
+```
+Re-do the wide 
+```{r include=TRUE}
+relig_income.back<-relig_income2 %>% pivot_wider( names_from="income",values_from="count")
+head(relig_income.back)
+```
+
+
 
 <!--chapter:end:01-intro.Rmd-->
 
@@ -108,7 +152,7 @@ Let's do the following:
 2. Lighten the background using the theme function in ggplot2
 3. Increase the size of axis text and titles
 4. Change y axis label
-```{r, fig.cap='Better looking line plot with colors', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r, fig.cap='Better looking line plot with groups', out.width='80%', fig.asp=.75, fig.align='center'}
 library(ggplot2)
 
 ggplot(ChickWeight, aes(x=Time, y=weight, group=Chick),size=2)+
@@ -117,11 +161,38 @@ ggplot(ChickWeight, aes(x=Time, y=weight, group=Chick),size=2)+
   ylab("Weight")
 ```
 
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'ggplotw'
-), 'packages.bib')
+## Let's make the plot  colorful
+
+```{r, fig.cap='Better looking line plot with colors', out.width='80%', fig.asp=.75, fig.align='center'}
+
+
+ggplot(ChickWeight, aes(x=Time, y=weight, color=Chick),size=2)+
+  geom_line()+
+  theme_minimal(base_size = 20)+
+  ylab("Weight")
+```
+
+## Change label fonts, color, angle etc
+
+```{r, fig.cap='change label font', out.width='80%', fig.asp=.75, fig.align='center'}
+
+
+ggplot(ChickWeight, aes(x=Time, y=weight, color=Chick),size=2)+
+  geom_line()+
+  theme_minimal(base_size = 20)+
+  ylab("Weight")+theme(axis.title.x = element_text( angle=40,vjust=0.2,color='blue',family="Comic Sans MS"))+
+  theme(axis.title.y =  element_text( color='purple',family="serif"))
+```
+# You can also create and save a theme for entire project
+
+```{r, fig.cap='change label font', out.width='80%', fig.asp=.75, fig.align='center'}
+theme_set<-function(){ theme_bw(base_size = 20)+
+    theme(axis.text.x = element_text(angle=35,vjust=0.8,color='green'))+
+    theme(legend.title = element_blank())}
+
+
+ggplot(ChickWeight, aes(x=Time, y=weight, color=Chick),size=2)+
+  geom_line()+theme_set()
 ```
 
 <!--chapter:end:02-literature.Rmd-->
@@ -236,7 +307,7 @@ ggplot(reord.chick, aes(x= reorder(Diet,n), y=n,fill=Diet))+
 
 <!--chapter:end:03-method.Rmd-->
 
-# Multivariate data
+# Multivariate plotting
 Now we will plot using multiple variables
 
 Let's use diamond dataset from tidyr
@@ -248,7 +319,7 @@ head(diamonds)
 ## Bar plot with categories, plot depth by cut
 
 
-```{r, fig.cap='Bar plot with grouping', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r, fig.cap='Bar plot with grouping', out.width='100%', fig.asp=.75, fig.align='center'}
 
 
 
@@ -264,7 +335,7 @@ ggplot(diamonds)+
 ## Bar plot with categories, side by side
 
 
-```{r, fig.cap='Bar plot with grouping', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r, fig.cap='Bar plot with grouping', out.width='100%', fig.asp=.75, fig.align='center'}
 
 
 ggplot(diamonds)+
@@ -276,7 +347,7 @@ ggplot(diamonds)+
 
 ## Segemented bar plot, appealing viz
 
-```{r, fig.cap='Bar plot with grouping', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r, fig.cap='Bar plot with segments', out.width='75%', fig.asp=.75, fig.align='center'}
 
 
 diamonds %>%
@@ -287,7 +358,7 @@ diamonds %>%
          ggplot()+
           geom_col(aes(x=cut,y=prct,fill=color),position='fill')+
           geom_text(aes(x=cut,y=prct,label = label), 
-            size = 3, 
+            size = 3, color='white',
             position = position_stack(vjust = 0.5)) +
              theme_minimal(base_size = 20)+
   ylab("Percentage")+ xlab("Cut")
@@ -309,14 +380,15 @@ diamonds %>%
 
 
 ```
-Let's see if the depth is related to price
+
+Let's see if the Carat is related to price
 ```{r, fig.cap='Scatter plot with grouping and smooth line', out.width='80%', fig.asp=.75, fig.align='center'}
 
          ggplot(diamonds)+
           geom_point(aes(x=carat,y=price,color=color))+
   geom_smooth(aes(x=carat,y=price,color=color),method='lm')+
   theme_bw()+
-  ylab("Price")+ xlab("Price")
+  ylab("Carat")+ xlab("Price")
 
 
 ```
@@ -332,6 +404,7 @@ Let's see if the depth is related to price
 
 
 ```
+
 ## Grouping using facets
 ```{r, fig.cap='Scatter plot with facets and different labels', out.width='80%', fig.asp=.75, fig.align='center'}
 

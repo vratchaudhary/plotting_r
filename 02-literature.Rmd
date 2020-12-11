@@ -47,7 +47,7 @@ Let's do the following:
 2. Lighten the background using the theme function in ggplot2
 3. Increase the size of axis text and titles
 4. Change y axis label
-```{r, fig.cap='Better looking line plot with colors', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r, fig.cap='Better looking line plot with groups', out.width='80%', fig.asp=.75, fig.align='center'}
 library(ggplot2)
 
 ggplot(ChickWeight, aes(x=Time, y=weight, group=Chick),size=2)+
@@ -56,9 +56,36 @@ ggplot(ChickWeight, aes(x=Time, y=weight, group=Chick),size=2)+
   ylab("Weight")
 ```
 
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'ggplotw'
-), 'packages.bib')
+## Let's make the plot  colorful
+
+```{r, fig.cap='Better looking line plot with colors', out.width='80%', fig.asp=.75, fig.align='center'}
+
+
+ggplot(ChickWeight, aes(x=Time, y=weight, color=Chick),size=2)+
+  geom_line()+
+  theme_minimal(base_size = 20)+
+  ylab("Weight")
+```
+
+## Change label fonts, color, angle etc
+
+```{r, fig.cap='change label font', out.width='80%', fig.asp=.75, fig.align='center'}
+
+
+ggplot(ChickWeight, aes(x=Time, y=weight, color=Chick),size=2)+
+  geom_line()+
+  theme_minimal(base_size = 20)+
+  ylab("Weight")+theme(axis.title.x = element_text( angle=40,vjust=0.2,color='blue',family="Comic Sans MS"))+
+  theme(axis.title.y =  element_text( color='purple',family="serif"))
+```
+# You can also create and save a theme for entire project
+
+```{r, fig.cap='change label font', out.width='80%', fig.asp=.75, fig.align='center'}
+theme_set<-function(){ theme_bw(base_size = 20)+
+    theme(axis.text.x = element_text(angle=35,vjust=0.8,color='green'))+
+    theme(legend.title = element_blank())}
+
+
+ggplot(ChickWeight, aes(x=Time, y=weight, color=Chick),size=2)+
+  geom_line()+theme_set()
 ```

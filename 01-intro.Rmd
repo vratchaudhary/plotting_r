@@ -1,20 +1,63 @@
 # Data preperation {#intro}
 
 
-
+##Data
 We can enter CSV data in R using read.csv function or read_csv function from readr package. However, for now we will use data that already exist in the datasets packages that we downloaded
 
 Lets load the library 'datsets'
-```{r include=TRUE}
+```{r include=FALSE}
 library(datasets)
+library(tidyverse)
 
 
 ```
 
 
-Lets look at the chickeweight data 
+Lets look at the chickweight data 
 
 ```{r include=TRUE}
 head(ChickWeight)
-
+str(ChickWeight)
 ```
+
+##Data manipulation with dplyr and tidyverse
+
+Let us create a column that calculates number of chicks following each type of diet
+
+Lets look at the chickweight data 
+
+```{r include=TRUE}
+ChickWeight2<-ChickWeight %>% 
+                 count(Diet)
+   
+head(ChickWeight2)
+```
+
+Let's look at mean weight of chick in each diet category
+
+```{r include=TRUE}
+ChickWeight3<-ChickWeight %>% 
+              group_by(Diet) %>% 
+              mutate(mean.wt= mean(weight)) # muatate can be used to create new columns
+   
+head(ChickWeight3)
+```
+Let's arrange the data in wide form, ggplot often likes the data to be in long form, that is stacked in rows. 
+For example, here we have Diet in rows.
+
+Let's look at some data in wide form
+```{r include=TRUE}
+head(relig_income)
+```
+Let's arrange so that income is stacked in rows
+```{r include=TRUE}
+relig_income2<-relig_income %>% pivot_longer(!religion, names_to="income",values_to="count")
+head(relig_income2)
+```
+Re-do the wide 
+```{r include=TRUE}
+relig_income.back<-relig_income2 %>% pivot_wider( names_from="income",values_from="count")
+head(relig_income.back)
+```
+
+
